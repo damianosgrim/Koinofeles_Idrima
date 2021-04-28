@@ -4,6 +4,3 @@ Project B Eξαμήνου στο μάθημα του **Oντοκεντρικού
 * Γρημάνης Δαμιανός
 * Κουρή Μαρία
 * Πατέλη Χρυσαυγή<br/> 
-
-<img src="/C:/Users/ΘΥΕΛΛΑ/Desktop/Project/UML.png" alt="UML"
-style="height: 1000px; width:400px;"/>

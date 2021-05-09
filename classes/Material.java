@@ -7,5 +7,11 @@ public class Material extends Entity{
     public String getDetails(){
         return (level1 + level2 + level3 + " the object is material" );
     }
+     //@override    
+    public String toString(){
+        return "info: " + getEntityInfo() + "details "+ getDetails();
+     }
+
+    
 }
         

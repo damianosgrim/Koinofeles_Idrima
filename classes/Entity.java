@@ -1,5 +1,5 @@
 public abstract class Entity{
-    private String name; //ονομα.                   
+    private String name; //ονομα δωρεάς
     private String description; //συντομη περγραφή
     private int id; //κωδικός είδους
     

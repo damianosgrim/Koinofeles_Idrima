@@ -10,6 +10,6 @@ public int getNoPersons() { return noPersons; }
 public void setNoPersons(int noPersons) {this.noPersons=noPersons;}
 
 ArrayList<RequestDonationList> receivedList = new ArrayList<RequestDonationList>();
-ArrayList<Requests> requestsList = new ArrayList<Requests>();
+ArrayList<Request> requestsList = new ArrayList<Request>();
 
 }

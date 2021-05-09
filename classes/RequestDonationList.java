@@ -17,7 +17,7 @@ public class RequestDonationList{
     
     public void monitor(){
     System.out.println(rdEntities);
-    }//print list's inhalt
+    }//print list's content
     
     public void reset(){
     rdEntities.clear();}//clear the list

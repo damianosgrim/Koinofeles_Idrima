@@ -8,14 +8,14 @@ public class RequestDonationList{
     public void add(){}//add a requestdonation in the list
     
     public void remove(){
-    rdEntities.remove(); //add argument to remove a specific object from the list 
+        rdEntities.remove(); //add argument to remove a specific object from the list 
     }//remove a requestdonation from the list
-    
+
     public void modify(){
-    
+
     }//change quantity of a product
     
-    public void monitor(){
+    public String monitor(){
     System.out.println(rdEntities);
     }//print list's content
     

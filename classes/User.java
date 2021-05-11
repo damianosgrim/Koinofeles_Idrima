@@ -16,9 +16,8 @@ public void setLastName(String lastname) { this.lastname=lastname;}
 
 public String getPhone() { return phone; }
 public void setPhone(String Phone) { this.phone=phone;}
+
+//Επιστρέφει false και για όλες τις υποκλάσεις εκτός απο το Admin που έχουμε κάνει override.
+public boolean isAdmin() { return false; } 
 }
 
-    
- 
-    
-    

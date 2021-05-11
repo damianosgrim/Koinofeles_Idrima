@@ -11,9 +11,9 @@ public class RequestDonation
     
     
     //interface comparator
-    public int compare(RequestDonation d1, RequestDonation d2)
+    private int compare(Entity d1, Entity d2)
         {
             if (d1.getId()==d2.getId()){return 0;} 
-            else if(d1.getId()=!d2.getId()){return 1;}
+            else {return 1;}
         }
     }

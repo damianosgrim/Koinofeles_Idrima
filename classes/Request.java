@@ -9,4 +9,5 @@ public class Request extends RequestDonationList{
     public void validRequestDonation(){
         
     }
+    
 }

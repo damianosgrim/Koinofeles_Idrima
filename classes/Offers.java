@@ -1,6 +1,6 @@
 public class Offers extends RequestDonationList{
     public void commit(){  
-        
-    rdEntities.remove(); //remove an object from rdEntities
+        ArrayList <rdEntities> copy = RequestDonationList (currentDonations); //update currentDonation with copy from rdEntities
+    rdEntities.clear(); //clear rdEntities
     } //update currentDonations with rdEntities.
 }

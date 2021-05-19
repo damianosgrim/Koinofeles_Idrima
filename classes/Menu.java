@@ -21,7 +21,3 @@ public static void Scan() {
         }
 } 
 }
-
-    
-   
-   

@@ -1,18 +1,25 @@
 import java.util.ArrayList;
 public class RequestDonationList{
-    ArrayList<String> rdEntities=new ArrayList<String>(); //create a list
+    ArrayList<RequestDonation> rdEntities=new ArrayList<RequestDonation>(); //create a list
+    RequestDonation rdon;
     
     //methods
-    public void get(){}//return requestdonation and give id of entity
+    public RequestDonation getRequestDonation(){return rdon;}
     
-    public void add(){}//add a requestdonation in the list
+    public RequestDonation get(int id){
+        for (int i =0; i<rdEntities.size(); i++)
+            if (id==i.getId()){return i.getRequestDonation();}
+    }//return requestdonation and give id of entity
     
-    public void remove(){
-        rdEntities.remove(); //add argument to remove a specific object from the list 
+    public void add(RequestDonation requestdonation){  
+    rdEntities.add(Request Donation);}//add a requestdonation in the list
+            //check if this donation already exists, how to use comparator
+    public void remove(RequestDonation requestdonation){
+        rdEntities.remove(requestdonation);  
     }//remove a requestdonation from the list
 
-    public void modify(){
-
+    public void modify(double quantity){
+        setQuantity(quantity);
     }//change quantity of a product
     
     public String monitor(){

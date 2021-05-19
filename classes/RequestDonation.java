@@ -9,7 +9,13 @@ public class RequestDonation
     this.quantity=quantity;
     }
     
+    public int get_id(){return entity.getId();} //return id for requestdonation object
     
+    public Entity getEntity(){return entity;}
+    
+    public void setQuantity(double quantity){this.quantity=quantity;} 
+    public double getQuantity(){return quantity;}
+        
     //interface comparator
     private int compare(Entity d1, Entity d2)
         {

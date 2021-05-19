@@ -9,6 +9,8 @@ public Beneficiary(String firstname, String lastname, String phone, int noPerson
 public int getNoPersons() { return noPersons; }
 public void setNoPersons(int noPersons) {this.noPersons=noPersons;}
 
+// na koitaksoume wrappers
+
 ArrayList<RequestDonationList> receivedList = new ArrayList<RequestDonationList>();
 ArrayList<Request> requestsList = new ArrayList<Request>();
 

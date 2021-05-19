@@ -6,8 +6,8 @@ public abstract class Entity{
     public String getName(){return name;}
     public void setName(String name){this.name=name;}       
     
-     public String getDescription(){return description;}
-     public void setDescription(String description){this.description=description;}
+    public String getDescription(){return description;}
+    public void setDescription(String description){this.description=description;}
     
     public int getId(){return id;}
     public void setId(int id){this.id=id;}
@@ -19,6 +19,6 @@ public abstract class Entity{
     abstract String getDetails();
     
     public String toString(){
-        return "info: " + getEntityInfo() + "details "+ getDetails(); //εκτύπωση!! προσοχή
-        }
+        return "info: " + getEntityInfo() + "details "+ getDetails(); 
+    }
 }

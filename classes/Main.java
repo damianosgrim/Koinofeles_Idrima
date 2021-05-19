@@ -36,6 +36,5 @@ Donator d = new Donator("Eleni", "Vogiatzaki", "13030");
 org.insertDonator(d);
 
 
-
 }
 }

@@ -1,5 +1,5 @@
 public abstract class User {
-private String firstname;  //Επιλέγουμε να έχουμε και όνομα και επώνυμο αντι για σκέτο name
+private String firstname;  //Επιλέγουμε να έχουμε και όνομα και επώνυμο αντί για σκέτο name
 private String lastname;
 private String phone;
 
@@ -20,4 +20,3 @@ public void setPhone(String Phone) { this.phone=phone;}
 //Επιστρέφει false και για όλες τις υποκλάσεις εκτός απο το Admin που έχουμε κάνει override.
 public boolean isAdmin() { return false; } 
 }
-

@@ -6,4 +6,5 @@ public class Service extends Entity{
     public String toString(){
     return "info: " + getEntityInfo() + "details "+ getDetails();
     }
+      
 }

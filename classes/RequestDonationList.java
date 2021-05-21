@@ -7,13 +7,17 @@ public class RequestDonationList{
     public RequestDonation getRequestDonation(){return rdon;}
     
     public RequestDonation get(int id){
-        for (int i =0; i<rdEntities.size(); i++)
-            if (id==i.getId()){return i.getRequestDonation();}
-    }//return requestdonation and give id of entity
+        for (int i = 0; i<rdEntities.size(); i++)
+            if (id==rdEntities.get(i).getId()){return rdEntities.get(i).getRequestDonation();}
+    } //return requestdonation and give id of entity
     
     public void add(RequestDonation requestdonation){  
-    rdEntities.add(Request Donation);}//add a requestdonation in the list
-            //check if this donation already exists, how to use comparator
+        for (int i = 0; i<rdEntities.size(); i++)
+        //check if this donation already exists
+            if (requestdonation.get_id()==i.getId()){i.setQuantity(i.getQuantity()+requestdonation.getQuantity());} 
+            else {rdEntities.add(requestdonation);}   //add a requestdonation in the list
+    }
+    
     public void remove(RequestDonation requestdonation){
         rdEntities.remove(requestdonation);  
     }//remove a requestdonation from the list
@@ -27,5 +31,5 @@ public class RequestDonationList{
     }//print list's content
     
     public void reset(){
-    rdEntities.clear();}//clear the list
-}
+    rdEntities.clear();}//clear the list 
+    }

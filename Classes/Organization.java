@@ -10,10 +10,8 @@ static ArrayList<Beneficiary> beneficiaryList = new ArrayList<Beneficiary>();
     public Organization(String name, Admin admin) 
     {this.name=name;
      this.admin=admin; }
-    
-    
-    
-    private RequestDonationList currentDonations; //pithani prosthiki methodou add apo tin RDL ston setter
+     
+    public static RequestDonationList currentDonations; //pithani prosthiki methodou add apo tin RDL ston setter
     public RequestDonationList getCurrentDon(){return currentDonations;}
     public void setCurrentDon(RequestDonationList currentDonations){this.currentDonations=currentDonations;}
       
@@ -33,7 +31,7 @@ static ArrayList<Beneficiary> beneficiaryList = new ArrayList<Beneficiary>();
     public void listDonators() {for (Donator donator : donatorList) { System.out.println(donator.getFirstName() + donator.getLastName() ); }}
     public void listBeneficiary() {for (Beneficiary beneficiary : beneficiaryList) { System.out.println(beneficiary.getFirstName() + beneficiary.getLastName() ); }}
     
-    public int exists(String num){   
+    public static int exists(String num){   
     boolean num1 = donatorList.contains(num); 
     boolean num2 = beneficiaryList.contains(num);
     if(num1||num2)
@@ -41,3 +39,4 @@ static ArrayList<Beneficiary> beneficiaryList = new ArrayList<Beneficiary>();
     //check wrappers 
     }
 }
+    

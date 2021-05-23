@@ -1,43 +1,36 @@
 import java.util.*;
 public class RequestDonationList{
-    static ArrayList<RequestDonation> rdEntities=new ArrayList<RequestDonation>(); //create a list
-    RequestDonation rdon;
+    public static ArrayList<RequestDonation> rdEntities=new ArrayList<RequestDonation>(); //create a list
+    static RequestDonation rdon;
+    
+    public static ArrayList<RequestDonation> getrdEntities(){
+        return rdEntities;
+    }
     
     //constructor χωρίς ορίσματα
-    public RequestDonationList(){    
-    }
+    public RequestDonationList(){}
     
     //methods
-    public RequestDonation getRequestDonation(){return rdon;}
+    public static RequestDonation getRequestDonation(){return rdon;}
     
+    
+    // give id of entity and return requestdonation 
     public static RequestDonation get(int id){
-        for (int i = 0; i<rdEntities.size(); i++)
-            if (id==rdEntities.get(i).getId()){return rdEntities.get(i).getRequestDonation();}
-    } //return requestdonation and give id of entity
+        RequestDonation r =null;
+        for (int i = 0; i<rdEntities.size(); i++){
+            if (id==rdEntities.get(i).getEntity().getId()){ r= rdEntities.get(i);}
+         } 
+         return r;
+      }
     
-    public static void add(RequestDonation requestdonation, double quant){  
-        if(rdEntities.contains(requestdonation)) {
-           int quan = requestdonation.getEntity().getQuantity();
-           requestdonation.getEntity().setQuantity(quan+quant);
-       /* for (int i = 0; i<rdEntities.size(); i++)
-        //check if this donation already exists
-            if (requestdonation.get_id()==rdEntities.get(i).getId()){i.setQuantity(i.getQuantity()+requestdonation.getQuantity());} 
-            else {rdEntities.add(requestdonation);}   //add a requestdonation in the list */
-    } }
-    
-    
-    public void remove(RequestDonation requestdonation){
-        rdEntities.remove(requestdonation);  
-    }//remove a requestdonation from the list
-
-    public void modify(double quantity){
-        setQuantity(quantity);
-    }//change quantity of a product
-    
-    public String monitor(){
-    System.out.println(rdEntities);
-    }//print list's content
-    
-    public void reset(){
-    rdEntities.clear();}//clear the list 
-    }
+    //add a requestdonation in rdentities and if already exists change  quantity    
+    public static void add(RequestDonation requestdonation, double quant){  // εξαιρεση!!!
+         for (int i = 0; i<rdEntities.size(); i++)
+        {
+        if(rdEntities.get(i).getEntity().getId()== requestdonation.getEntity().getId()) {
+            requestdonation.setQuantity(requestdonation.getQuantity()+quant);
+            rdEntities.get(i).setQuantity(requestdonation.getQuantity()+quant);
+        }
+        else if (rdEntities.get(i).getEntity().getId() != requestdonation.getEntity().getId()){
+        rdEntities.add(requestdonation);}
+    }  

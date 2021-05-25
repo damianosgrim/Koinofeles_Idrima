@@ -14,7 +14,7 @@ public class RequestDonationList{
     public static RequestDonation getRequestDonation(){return rdon;}
     
     
-    // give id of entity and return requestdonation 
+    //καταχώρηση ενός id του entity και επιστροφή του αντίστοιχου requestdonation 
     public static RequestDonation get(int id){
         RequestDonation r =null;
         for (int i = 0; i<rdEntities.size(); i++){
@@ -23,7 +23,7 @@ public class RequestDonationList{
          return r;
       }
     
-    //add a requestdonation in rdentities and if already exists change  quantity    
+    //προσθήκη requestdonation στην rdentities και τροποποίση του quantity εάν ήδη υπάρχει 
     public static void add(RequestDonation requestdonation, double quant){  // εξαιρεση!!!
          for (int i = 0; i<rdEntities.size(); i++)
         {
@@ -36,27 +36,32 @@ public class RequestDonationList{
     }  
     } 
 
-    //remove a requestdonation from the list
+    //διαγραφή ενός requestdonation από την λίστα
      public void remove(RequestDonation requestdonation){
         rdEntities.remove(requestdonation);  
     }
     
     
+    //αλλαγή της ποσότητας ενός product
     public void modify(RequestDonation d ,double quantity){
         if(rdEntities.contains(d)){
         d.setQuantity(quantity);
         rdEntities.get(rdEntities.indexOf(d)).setQuantity(quantity);
     }
-    }//change quantity of a product
+    }
     
+    
+    //εκτύπωση των στοιχείων της λίστας
     public void monitor(){
         for (RequestDonation requestdon : rdEntities) { 
             System.out.println("name of donation " + requestdon.getEntity().getName() + ", quantity " +requestdon.getQuantity()); }
-        }//print list's content
+        }
     
+    
+    //εκαθάριση λίστας
     public void reset(){
     rdEntities.clear();
-    }//clear the list 
+    }
     
 }
     

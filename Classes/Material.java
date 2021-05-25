@@ -1,20 +1,25 @@
 import java.util.*;
 public class Material extends Entity{
 
-    private double level1; //η ποσοτητα που δικαιοuτai 1 ατομο 
-    private double level2; //η ποσοτητα που δικαιουνται 2-4 ατομα 
-    private double level3; //η ποσοτητα που δικαιουνται 5+ ατομα 
+    private static double level1=5; //η ποσοτητα που δικαιοuτai 1 ατομο 
+    private static double level2=10; //η ποσοτητα που δικαιουνται 2-4 ατομα 
+    private static double level3=20; //η ποσοτητα που δικαιουνται 5+ ατομα 
     
-    public static int num(Beneficiary b) {
-        if(b.getNoPersons()==1) {return 1;}
-        else if(b.getNoPersons()>=2 && b.getNoPersons()<=4) {return 2;}
-        else if(b.getNoPersons()>=5) {return 3;} }
+     public static double  getLevel1(){return level1;}
+     
+     public static double getLevel2(){return level2;}
+     
+     public static double getLevel3(){return level3;}
+     
+     public void setLevel1(double level1){this.level1=level1;}
+     
+     public void setLevel2(double level2){this.level2=level2;}
+     
+     public void setLevel3(double level3){this.level3=level3;}
     
     public  String getDetails(){
-        if (num()==1) {return level1 + " the object is material"; }
-        else if (num()==2) {return level2 + " the object is material"; }
-        else if (num()==3) {return level3 + "  the object is material"; }
-        
+       
+        return ("level1: "+ level1 + " level2 " + level2 + " level3 " + level3 + " this object is material");
         
     }
      //@override    

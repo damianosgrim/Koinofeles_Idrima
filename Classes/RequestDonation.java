@@ -9,7 +9,7 @@ public class RequestDonation
     this.quantity=quantity;
     }
     
-    public int get_id(){return entity.getId();} //return id for requestdonation object
+    public int get_id(){return entity.getId();} //επιστρέφει το id για ένα requestdonation 
     
     public Entity getEntity(){return entity;}
     

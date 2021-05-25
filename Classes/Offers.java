@@ -3,9 +3,9 @@ import java.util.*;
 
 public class Offers extends RequestDonationList{
     public static void commit(){  
-       ArrayList <RequestDonation> rdEntitiesCopy = new  ArrayList<RequestDonation> (currentDonations); //update currentDonation with copy from rdEntities
+       ArrayList <RequestDonation> rdEntitiesCopy = new  ArrayList<RequestDonation> (currentDonations); //ενημέρωση των currentDonations με το περιεχόμενο rdEntities
    
-    rdEntities.clear(); //clear rdEntities
-    } //update currentDonations with rdEntities.
+    rdEntities.clear(); //εκαθάριση της rdEntities
+    } 
 }
 

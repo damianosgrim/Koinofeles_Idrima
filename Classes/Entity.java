@@ -4,6 +4,7 @@ public abstract class Entity{
     private String description; //συντομη περγραφή
     private int id; //κωδικός είδους
     
+    //μέθοδοι
     public String getName(){return name;}
     public void setName(String name){this.name=name;}       
     

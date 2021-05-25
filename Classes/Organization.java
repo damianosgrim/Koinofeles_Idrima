@@ -36,7 +36,7 @@ static ArrayList<Beneficiary> beneficiaryList = new ArrayList<Beneficiary>();
     boolean num2 = beneficiaryList.contains(num);
     if(num1||num2)
     {return 0;} else {return 1;}
-    //check wrappers 
+    //να κοιτάξουμε wrappers
     }
 }
     

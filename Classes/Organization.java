@@ -28,18 +28,49 @@ static ArrayList<Beneficiary> beneficiaryList = new ArrayList<Beneficiary>();
     public static Admin getAdmin() {return admin;}
     public void setAdmin(Admin admin) {this.admin=admin;}
     
-    public void addEntity(Entity entity) {entityList.add(entity);} //Eξαίρεση
+    //εξαιρεση ελεγχει αν υπάρχει ήδη το entity που βάζουμε
+    public void addEntity(Entity entity) {
+         if(entityList.contains(entity)){
+             throw new IllegalArgumentException("This entity is already in the list.");
+            }
+        else{
+            entityList.add(entity);
+            }
+    }
+        
     public void removeEntity(int entity) {entityList.remove(entity);}
     
-    public static void insertDonator(Donator donator) {donatorList.add(donator);} //Eξαίρεση
+    //εξαιρεση ελεγχει αν υπάρχει ήδη ο donator που βάζουμε
+    public static void insertDonator(Donator donator) {
+        if(donatorList.contains(donator)){
+             throw new IllegalArgumentException("This donator is already in the list.");
+            }
+        else{
+            donatorList.add(donator);
+            }
+        }
+        
+    //αφαιρει έναν donator απο τον οργανισμό
     public void removeDonator(int donator) {donatorList.remove(donator);}
     
-    public static void insertBeneficiary(Beneficiary beneficiary) {beneficiaryList.add(beneficiary);} //Eξαίρεση
+    //εξαιρεση ελεγχει αν υπάρχει ήδη ο beneficiary που βάζουμε
+    public static void insertBeneficiary(Beneficiary beneficiary) {
+        if(beneficiaryList.contains(beneficiary)){
+             throw new IllegalArgumentException("This beneficiary is already in the list.");
+            }
+        else{
+            beneficiaryList.add(beneficiary);
+            }
+     } 
+     //αφαιρει έναν beneficiary απο τον οργανισμό 
     public void removeBeneficiary(int beneficiary) {beneficiaryList.remove(beneficiary);}
     
     public void listEntities() {for (Entity entity : entityList) { System.out.println(entity.getDetails()); }}
-    public void listDonators() {for (Donator donator : donatorList) { System.out.println(donator.getFirstName() + donator.getLastName() ); }}
-    public void listBeneficiary() {for (Beneficiary beneficiary : beneficiaryList) { System.out.println(beneficiary.getFirstName() + beneficiary.getLastName() ); }}
     
+    // εμφανίζει τους δωρητές Donators.
+    public void listDonators() {for (Donator donator : donatorList) { System.out.println(donator.getFirstName() + donator.getLastName() ); }} 
+    
+    
+    public void listBeneficiary() {for (Beneficiary beneficiary : beneficiaryList) { System.out.println(beneficiary.getFirstName() + beneficiary.getLastName() ); }}
     
 }

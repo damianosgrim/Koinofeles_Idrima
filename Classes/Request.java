@@ -40,9 +40,7 @@ public class Request extends RequestDonationList{
         return l;
         
     }
-    
-        
-        
+            
 }  
     
 

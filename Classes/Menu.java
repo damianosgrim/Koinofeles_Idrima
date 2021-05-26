@@ -5,8 +5,9 @@ public class Menu {
      static Scanner scan = new Scanner(System.in);
      private static String ans;
      private static String phone;
-     
+     private static boolean havelogout=true; //Maς δείχνει αν ο χρήστης είναι συνδεδεμένος στο σύστημα
  
+    
 public static void Scan() throws NullLineReadedException{
     System.out.println("Welcome to our Donator-Beneficiary system");
     System.out.println("Please enter a phone number: ");
@@ -144,7 +145,9 @@ if(search==0) {
 
 //Menu Beneficiary
 public static void MenuB(Beneficiary b) {
-    System.out.println("Welcome " + b.getFirstName() + " " + b.getLastName() + ", your phone is " + b.getPhone() + ", you're benefiaciary and the number of your family members are: " + b.getNoPersons() + ".");  
+     if (havelogout==true) {
+    System.out.println("Welcome " + b.getFirstName() + " " + b.getLastName() + ", your phone is " + b.getPhone() + ", you're benefiaciary and the number of your family members are: " + b.getNoPersons() + ".");
+    havelogout=false; }
     System.out.println("1.Add Request  2.Show Requests  3.Commit  4.Back  5.Logout  6.Exit  (Enter the number of the option you want)");
     ans=scan.nextLine();
         switch (ans) {
@@ -182,11 +185,31 @@ public static void MenuB(Beneficiary b) {
 
 //Menu Donator
 public static void MenuD(Donator d) {
+    if (havelogout==true) {
     System.out.println("Welcome " + d.getFirstName() + " " + d.getLastName() + ", your phone is " + d.getPhone() + ", you're donator."); 
+    havelogout=false; }
     System.out.println("1.Add Offer  2.Show Offers  3.Commit  4.Back  5.Logout  6.Exit  (Enter the number of the option you want)");
     ans=scan.nextLine();
         switch (ans) {
-            case "1": 
+            case "1":
+            System.out.println("Select what type of offer you want to add");
+            System.out.println("1.Matterial  2.Offer (Press b to back)");
+            ans=scan.nextLine();
+            switch (ans) {
+                case "1":
+                break;
+                
+                case "2":
+                break;
+                
+                case "b":
+                MenuD(d);
+                break;
+                
+                default: 
+            System.out.println("Invalid command!");
+            break;   
+            }
             break;
             
             case "2": 
@@ -220,7 +243,9 @@ public static void MenuD(Donator d) {
 
 //Menu Admin
 public static void MenuA(Admin a) {
+     if (havelogout==true) {
     System.out.println("Welcome " + a.getFirstName() + " " + a.getLastName() + ", your phone is " + a.getPhone() + ", you're admin."); 
+    havelogout=false; }
     System.out.println("1.View  2.Monitor Organization  3.Back  4.Logout  5.Exit  (Enter the number of the option you want)");
     ans=scan.nextLine();
         switch (ans) {
@@ -256,6 +281,7 @@ public static void MenuA(Admin a) {
 //Αποσύνδεση χρήστη και επιστοροφή στην αρχική σελίδα
 public static void LogOut() {
     System.out.println("You have log out and returned to home page");
+    havelogout=true;
     try
     {  
     Menu.Scan();
@@ -270,3 +296,4 @@ public static void LogOut() {
 public static void ExitFromProgram(){
     System.exit(0);
 } 
+}

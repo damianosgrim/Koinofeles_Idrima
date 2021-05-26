@@ -32,13 +32,20 @@ org.addEntity(bs);
 
 
 Beneficiary b1 = new Beneficiary("Maria", "Kouri", "13032", 4); //Etoimata Request
-org.insertBeneficiary(b1);
 Beneficiary b2 = new Beneficiary("Damianos", "Grimanis", "13031", 2);  //Paroxes offers
-org.insertBeneficiary(b2);
 Donator d = new Donator("Eleni", "Vogiatzaki", "13030");
-org.insertDonator(d);
+org.insertBeneficiary(b1);
+org.insertBeneficiary(b2);
+org.insertDonator(d); 
 
-menu.Scan();
+try
+{
+    menu.Scan();
+}
+catch (NullLineReadedException nlre)
+{
+    nlre.printStackTrace();
+}
 
 }
 

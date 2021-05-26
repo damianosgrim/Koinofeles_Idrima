@@ -4,6 +4,8 @@ public static void main(String[] args) {
 Admin ad = new Admin("Chryssa", "Pateli", "13033");
 Organization org = new Organization("KoinofelesIdrimaCEID", ad);
 
+Menu menu = new Menu();
+
 Material mlk = new Material();
 mlk.setName("milk");
 org.addEntity(mlk);
@@ -36,6 +38,8 @@ org.insertBeneficiary(b2);
 Donator d = new Donator("Eleni", "Vogiatzaki", "13030");
 org.insertDonator(d);
 
+menu.Scan();
 
 }
+
 }

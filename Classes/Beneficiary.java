@@ -2,6 +2,9 @@ import java.util.*;
 public class Beneficiary extends User {
 int noPersons=1;
 
+//constructor χωρίς ορίσματα
+public Beneficiary(){}
+
 public Beneficiary(String firstname, String lastname, String phone, int noPersons) 
 { super(firstname, lastname, phone);
   this.noPersons=noPersons; }

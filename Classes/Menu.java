@@ -1,15 +1,12 @@
 import java.util.*;
 import java.io.*;
+import java.lang.*;
 public class Menu {
      static Scanner scan = new Scanner(System.in);
      private static String ans;
      private static String phone;
      
-//τερματίζεται το πρόγραμμα
-public static void exitFromProgram(){
-    System.exit(0);
-} 
-    
+ 
     
 public static void Scan() throws NullLineReadedException{
     System.out.println("Welcome to our Donator-Beneficiary system");
@@ -70,6 +67,7 @@ if(search==0) {
 }
 }
 
+//Μέθοδος εγρραφής χρήστη ως Beneficiary
  public static void SignB() {
      Beneficiary b = new Beneficiary();
      b.setPhone(phone);
@@ -97,10 +95,11 @@ if(search==0) {
      b.setNoPersons(Integer.parseInt(ans)); 
      Organization.insertBeneficiary(b);
      System.out.println("You sign up successfully as Beneficiay!");
-     Menu.MenuB(b);
-     
+     Menu.MenuB(b);    
 }
 
+
+//Μέθοδος εγρραφής χρήστη ως Beneficiary
  public static void SignD() {
      Donator d = new Donator();
      d.setPhone(phone);
@@ -121,21 +120,27 @@ if(search==0) {
     
      Organization.insertDonator(d);
      System.out.println("You sign up successfully as Donator!");
-     Menu.MenuD(d);
-     
+     Menu.MenuD(d);    
 }
 
-
+//Menu Beneficiary
 public static void MenuB(Beneficiary b) {
     System.out.println("Welcome " + b.getFirstName() + " " + b.getLastName() + " your phone is " + b.getPhone() + ", you're benefiaciary and the number of your family members are: " + b.getNoPersons() + ".");  
 }
 
+//Menu Donator
 public static void MenuD(Donator d) {
     System.out.println("Welcome " + d.getFirstName() + " " + d.getLastName() + " your phone is " + d.getPhone() + ", you're donator.");  
 }
 
+//Menu Admin
 public static void MenuA(Admin a) {
     System.out.println("Welcome " + a.getFirstName() + " " + a.getLastName() + " your phone is " + a.getPhone() + ", you're admin.");  
 }
 
+
+//Μέθοδος που τερματίζεi το πρόγραμμα
+public static void exitFromProgram(){
+    System.exit(0);
+} 
 }

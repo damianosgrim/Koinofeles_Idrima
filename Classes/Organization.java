@@ -1,7 +1,7 @@
 import java.util.*;
 public class Organization { //check wrappers
 private static String name;
-private Admin admin;
+private static Admin admin;
 static ArrayList<Entity> entityList = new ArrayList<Entity>();
 static ArrayList<Donator> donatorList = new ArrayList<Donator>();
 static ArrayList<Beneficiary> beneficiaryList = new ArrayList<Beneficiary>();
@@ -25,16 +25,16 @@ static ArrayList<Beneficiary> beneficiaryList = new ArrayList<Beneficiary>();
     public static RequestDonationList getCurrentDon(){return currentDonations;}
     public static void setCurrentDon(RequestDonationList currDon) {currentDonations=currDon;}*/
       
-    public Admin getAdmin() {return admin;}
+    public static Admin getAdmin() {return admin;}
     public void setAdmin(Admin admin) {this.admin=admin;}
     
     public void addEntity(Entity entity) {entityList.add(entity);} //Eξαίρεση
     public void removeEntity(int entity) {entityList.remove(entity);}
     
-    public void insertDonator(Donator donator) {donatorList.add(donator);} //Eξαίρεση
+    public static void insertDonator(Donator donator) {donatorList.add(donator);} //Eξαίρεση
     public void removeDonator(int donator) {donatorList.remove(donator);}
     
-    public void insertBeneficiary(Beneficiary beneficiary) {beneficiaryList.add(beneficiary);} //Eξαίρεση
+    public static void insertBeneficiary(Beneficiary beneficiary) {beneficiaryList.add(beneficiary);} //Eξαίρεση
     public void removeBeneficiary(int beneficiary) {beneficiaryList.remove(beneficiary);}
     
     public void listEntities() {for (Entity entity : entityList) { System.out.println(entity.getDetails()); }}
@@ -43,4 +43,3 @@ static ArrayList<Beneficiary> beneficiaryList = new ArrayList<Beneficiary>();
     
     
 }
-    

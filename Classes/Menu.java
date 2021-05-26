@@ -13,7 +13,6 @@ public static void Scan() throws NullLineReadedException{
               System.out.println("The phone number " + phone + " has been already added in the system");
          
         }
-     }  
-   
+     }   
 } 
 }

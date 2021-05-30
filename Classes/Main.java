@@ -7,15 +7,15 @@ Organization org = new Organization("KoinofelesIdrimaCEID", ad);
 Menu menu = new Menu();
 
 Material mlk = new Material();
-mlk.setName("milk");
+mlk.setName("Milk");
 org.addEntity(mlk);
 
 Material sug = new Material();
-sug.setName("sugar");
+sug.setName("Sugar");
 org.addEntity(sug);
 
 Material rc = new Material();
-rc.setName("rice");
+rc.setName("Rice");
 org.addEntity(rc);
 
 Service mds = new Service();
@@ -46,7 +46,5 @@ catch (NullLineReadedException nlre)
 {
     nlre.printStackTrace();
 }
-
 }
-
 }

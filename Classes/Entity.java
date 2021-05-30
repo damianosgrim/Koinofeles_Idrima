@@ -23,4 +23,6 @@ public abstract class Entity{
     public String toString(){
         return "info: " + getEntityInfo() + "details "+ getDetails(); 
     }
+    
+    public abstract int getEntityCategory();
 }

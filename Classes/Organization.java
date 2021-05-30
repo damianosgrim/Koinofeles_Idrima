@@ -1,4 +1,3 @@
-import java.util.*;
 public class Organization { //check wrappers
 private static String name;
 private static Admin admin;
@@ -50,10 +49,10 @@ static ArrayList<Beneficiary> beneficiaryList = new ArrayList<Beneficiary>();
             }
         }
         
-    //αφαιρει έναν donator απο τον οργανισμό
+    //αφαιρεί έναν donator απο τον οργανισμό
     public void removeDonator(int donator) {donatorList.remove(donator);}
     
-    //εξαιρεση ελεγχει αν υπάρχει ήδη ο beneficiary που βάζουμε
+    //εξαίρεση ελέγχει αν υπάρχει ήδη ο beneficiary που βάζουμε
     public static void insertBeneficiary(Beneficiary beneficiary) {
         if(beneficiaryList.contains(beneficiary)){
              throw new IllegalArgumentException("This beneficiary is already in the list.");
@@ -62,15 +61,48 @@ static ArrayList<Beneficiary> beneficiaryList = new ArrayList<Beneficiary>();
             beneficiaryList.add(beneficiary);
             }
      } 
-     //αφαιρει έναν beneficiary απο τον οργανισμό 
+     //αφαιρεί έναν Beneficiary απο τον οργανισμό 
     public void removeBeneficiary(int beneficiary) {beneficiaryList.remove(beneficiary);}
+
     
-    public void listEntities() {for (Entity entity : entityList) { System.out.println(entity.getDetails()); }}
+    public static void listEntities() {for (Entity entity : entityList) { System.out.println(entity.getDetails()); }}
     
-    // εμφανίζει τους δωρητές Donators.
-    public void listDonators() {for (Donator donator : donatorList) { System.out.println(donator.getFirstName() + donator.getLastName() ); }} 
+    //εμφανίζει τους δωρητές Donators
+    public void listDonators() {
+        for (Donator donator : donatorList) 
+        { System.out.println(donator.getFirstName() + donator.getLastName() ); }
+    } 
     
+    //εμφανίζει τους δωρητές Βeneficiary
+    public void listBeneficiary() {
+        for (Beneficiary beneficiary : beneficiaryList) 
+        { System.out.println(beneficiary.getFirstName() + beneficiary.getLastName() ); }
+    }
     
-    public void listBeneficiary() {for (Beneficiary beneficiary : beneficiaryList) { System.out.println(beneficiary.getFirstName() + beneficiary.getLastName() ); }}
-    
+    public static void showEntityinCategory(String Category){
+        int counter=1;
+        switch(Category){
+        case "1":
+            for(Entity i: entityList){
+                if(i.getEntityCategory()==1){
+                    System.out.println(""+ counter + " " + i.getName());
+                    counter++;
+                }
+            }
+            break;
+            
+        case "2":
+            for(Entity i: entityList){
+                if(i.getEntityCategory()==2){
+                    System.out.println(""+ counter + " " + i.getName());
+                    counter++;
+                }
+            }
+            break;
+        
+        default:
+        System.out.println("Invalid command!");
+            break;
+        }
+    }
 }

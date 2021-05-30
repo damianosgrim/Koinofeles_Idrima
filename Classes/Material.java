@@ -4,10 +4,11 @@ public class Material extends Entity{
     private static double level1=5; //η ποσοτητα που δικαιοuτai 1 ατομο 
     private static double level2=10; //η ποσοτητα που δικαιουνται 2-4 ατομα 
     private static double level3=20; //η ποσοτητα που δικαιουνται 5+ ατομα 
+    public int EntityCategory=1;
     
-     public static double  getLevel1(){return level1;}
+    public static double  getLevel1(){return level1;}
      
-     public static double getLevel2(){return level2;}
+    public static double getLevel2(){return level2;}
      
      public static double getLevel3(){return level3;}
      
@@ -26,6 +27,10 @@ public class Material extends Entity{
     public String toString(){
         return "info: " + getEntityInfo() + "details "+ getDetails();
      }
-     
+    
+     //μέθοδος που δηλώνεται για να χρησιμοποιηθεί στην main ώστε να εκτυπώνει στον Admin την ποσότητα των Materials
+    public int getEntityCategory(){
+        return EntityCategory;
+    }
     //prepei na epistrefei ta levels, na doume ti kanoun levels 
 }

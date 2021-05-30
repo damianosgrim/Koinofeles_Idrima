@@ -117,7 +117,7 @@ if(search==0) {
 }
 
 
-//Μέθοδος εγρραφής χρήστη ως Beneficiary
+//Μέθοδος εγγραφής χρήστη ως Beneficiary
  public static void SignD() {
      Donator d = new Donator();
      d.setPhone(phone);
@@ -250,9 +250,32 @@ public static void MenuA(Admin a) {
     ans=scan.nextLine();
         switch (ans) {
             case "1": 
+            System.out.println("1.Material  2.Services" );
+                ans=scan.nextLine(); 
+                switch(ans){
+                    case "1":
+                                Organization.showEntityinCategory(ans);
+                                System.out.println("Type the Name of the Material you want to check: ");
+                                ans=scan.nextLine();
+                                for (int i=0; i<Organization.entityList.size(); i++)
+                                {
+                                    Organization.entityList.get(i).getName();
+                                }
+                                getEntityInfo();
+                    break;
+                
+                    case "2":
+                                Organization.showEntityinCategory(ans);
+                    break;
+                
+                    default: 
+                                System.out.println("Invalid command");
+                    break;
+                }
             break;
             
             case "2": 
+                        
             break;
             
             case "3": 

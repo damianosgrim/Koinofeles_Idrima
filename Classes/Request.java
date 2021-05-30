@@ -40,8 +40,20 @@ public class Request extends RequestDonationList{
         return l;
         
     }
-            
-}  
     
+    public void commit(Beneficiary b, RequestDonation d){
+        try{
+            if(validRequestDonation(b,d)){
+                rdEntities.remove(d);
+                b.receivedList.add(d); }
+            }
+            catch(Exception e){
+            System.out.println("You can't make a request :( ");
+        }
+    }
+            
+            
+}
+  
 
 

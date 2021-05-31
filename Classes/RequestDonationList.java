@@ -10,9 +10,8 @@ public class RequestDonationList{
     //constructor χωρίς ορίσματα
     public RequestDonationList(){}
     
-    //methods
+        // γιατι την δημιουργησαμε;
     public static RequestDonation getRequestDonation(){return rdon;}
-    
     
     //καταχώρηση ενός id του entity και επιστροφή του αντίστοιχου requestdonation 
     public static RequestDonation get(int id){
@@ -41,7 +40,6 @@ public class RequestDonationList{
         rdEntities.remove(requestdonation);  
     }
     
-    
     //αλλαγή της ποσότητας ενός product
     public void modify(RequestDonation d ,double quantity){
         if(rdEntities.contains(d)){
@@ -50,19 +48,14 @@ public class RequestDonationList{
     }
     }
     
-    
     //εκτύπωση των στοιχείων της λίστας
     public void monitor(){
         for (RequestDonation requestdon : rdEntities) { 
             System.out.println("name of donation " + requestdon.getEntity().getName() + ", quantity " +requestdon.getQuantity()); }
         }
     
-    
-    //εκαθάριση λίστας
+    //εκαθάριση της λίστας
     public void reset(){
     rdEntities.clear();
     }
-    
 }
-    
-    

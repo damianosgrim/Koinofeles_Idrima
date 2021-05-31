@@ -9,6 +9,10 @@ public class Organization { //check wrappers
         static ArrayList<Donator> donatorList = new ArrayList<Donator>();
         //λίστα με τους επωφελούμενους
         static ArrayList<Beneficiary> beneficiaryList = new ArrayList<Beneficiary>();
+        
+        public static ArrayList<Entity> getentityList(){
+        return entityList;
+    }
     
         public static ArrayList<Donator> getdonatorList(){
             return donatorList;

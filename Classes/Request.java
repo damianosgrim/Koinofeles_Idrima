@@ -1,6 +1,6 @@
 public class Request extends RequestDonationList{
     
-    //@override
+    //ελέγχει αν η ποσότητα του entity είναι διαθέσιμη στον οργανισμό  //@override
     public static void add(RequestDonation requestdonation, double quant){  // εξαιρεση!!!
          for (int i = 0; i<rdEntities.size(); i++)
         {
@@ -11,8 +11,9 @@ public class Request extends RequestDonationList{
         else if (rdEntities.get(i).getEntity().getId() != requestdonation.getEntity().getId()){
         rdEntities.add(requestdonation);}
     } 
-   }
+    }
     
+    //ελέγχει αν ο Beneficiary δικαιούται την ποσότητα
     public void modify(RequestDonation d ,double quantity){
         if(rdEntities.contains(d)){
         d.setQuantity(quantity);
@@ -20,6 +21,7 @@ public class Request extends RequestDonationList{
     }
     }
     
+    //ελέγχει την ποσότητα ενός RequestDonation και αν είναι επιτρεπτή για των αριθμό μελών που δηλώνει ο Beneficiary
     public boolean validRequestDonation(Beneficiary b, RequestDonation d){  // ελεγχος ποσοτητας
         boolean l=false;
        if(b.getNoPersons()==1) {
@@ -37,11 +39,10 @@ public class Request extends RequestDonationList{
                l = true;
         } 
     }
-        return l;
-        
+        return l;   
     }
     
-    public void commit(Beneficiary b, RequestDonation d){
+    /*public void commit(Beneficiary b, RequestDonation d){
         try{
             if(validRequestDonation(b,d)){
                 rdEntities.remove(d);
@@ -50,10 +51,5 @@ public class Request extends RequestDonationList{
             catch(Exception e){
             System.out.println("You can't make a request :( ");
         }
-    }
-            
-            
+    }*/       
 }
-  
-
-

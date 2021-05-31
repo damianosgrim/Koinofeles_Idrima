@@ -1,13 +1,18 @@
+import java.util.*;
 public class Service extends Entity{
-    public int EntityCategory=2;
-      public String getDetails(){
+    int EntityCategory=2;
+    
+    public String getDetails(){
           return ("the object is service");
-        }
+    }
+        
       //@override
     public String toString(){
     return "info: " + getEntityInfo() + "details "+ getDetails();
     }
-     public int getEntityCategory(){
+    
+     //μέθοδος που δηλώνεται για να χρησιμοποιηθεί στην main ώστε να εκτυπώνει στον Admin την ποσότητα των Services
+    public int getEntityCategory(){
         return EntityCategory;
     }
       

@@ -24,6 +24,6 @@ public abstract class User {
     public String getPhone() { return phone; }
     public void setPhone(String phone) { this.phone=phone;}
     
-    //μέθοδος επιστρέφει false και για όλες τις υποκλάσεις εκτός από το Admin που έχουμε κάνει override.
+    //μέθοδος επιστρέφει false για όλες τις υποκλάσεις εκτός από το Admin που έχουμε κάνει override.
     public boolean isAdmin() { return false; } 
 }

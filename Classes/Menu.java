@@ -290,7 +290,7 @@ public static void MenuA(Admin a)  {
                 ans=scan.nextLine(); 
                 switch(ans){
                     case "1":
-                                Organization.showEntityinCategory(ans);
+                                Organization.showCategory(ans);
                                do{
                                 System.out.print("Type the name of a material for more details:");
                                ans=scan.nextLine();
@@ -315,7 +315,7 @@ public static void MenuA(Admin a)  {
                      break;
                 
                     case "2":
-                                Organization.showEntityinCategory(ans);
+                                Organization.showCategory(ans);
                                 do{
                                 System.out.print("Type the name of a service for more details:");
                                ans=scan.nextLine();
@@ -346,6 +346,96 @@ public static void MenuA(Admin a)  {
               break;
             
             case "2": 
+            ex=false;
+            do{
+            System.out.println("1.List Beneficiaries  2.List Donators  3.Reset Beneficiaries Lists");
+            ans=scan.nextLine();
+            switch(ans){
+                case"1":
+                 Organization.listBeneficiary();
+                 System.out.println("Choose one Beneficiary by last name");
+                 ans=scan.nextLine();
+                for(Beneficiary i:Organization.getbeneficiaryList()){
+                                    if(ans.equals(i.getLastName())){
+                                        for(int j=0;j<Organization.getbeneficiaryList().size();j++){
+                                             if(Organization.getbeneficiaryList().get(j).getLastName().equals(ans)){
+                                                System.out.println(Organization.getbeneficiaryList().get(j).getreceivedList());
+                                                
+                                                System.out.println("Do you want to delete the list? (y/n)");
+                                                ans=scan.nextLine();
+                                                 if ((ans.equals("n") || ans.equals("no") )) {
+                                                     System.out.println("Do you want to delete this Beneficiary? (y/n)");
+                                                     ans=scan.nextLine();
+                                                     if ((ans.equals("n") || ans.equals("no") )) {continue;} // pame piso
+                                                    else if(ans.equals("y") || ans.equals("yes") ){
+                                                     Organization.removeBeneficiary(Organization.getbeneficiaryList().get(j));
+                                                     System.out.println("Beneficiary successfully Deleted ");
+                                                      }
+                                                 } // pame piso
+                                                else if(ans.equals("y") || ans.equals("yes") ){
+                                                Organization.getbeneficiaryList().get(j).receivedList.clear();
+                                                 System.out.println("ReceivedList successfully Deleted ");
+                                                 System.out.println("Do you want to delete this Beneficiary? (y/n)");
+                                                  ans=scan.nextLine();
+                                                  if ((ans.equals("n") || ans.equals("no") )) {continue;} // pame piso
+                                                 else if(ans.equals("y") || ans.equals("yes") ){
+                                                   Organization.removeBeneficiary(Organization.getbeneficiaryList().get(j));
+                                                     System.out.println("Beneficiary successfully Deleted ");
+                                                } 
+                                            
+                                             }
+                                             
+                                             
+                                        }
+                                    }
+                                }
+                            }
+                                    
+                 ex=true;
+                 break;
+                 
+                 case"2":
+                 Organization.listDonators();
+                  System.out.println("Choose one Donator by last name");
+                 ans=scan.nextLine();
+                for(Donator i:Organization.getdonatorList()){
+                                    if(ans.equals(i.getLastName())){
+                                        for(int j=0;j<Organization.getdonatorList().size();j++){
+                                             if(Organization.getdonatorList().get(j).getLastName().equals(ans)){
+                                                System.out.println(Organization.getdonatorList().get(j).getoffersList());
+                                                
+                                                     System.out.println("Do you want to delete this Donator? (y/n)");
+                                                     ans=scan.nextLine();
+                                                     if ((ans.equals("n") || ans.equals("no") )) {continue;} // pame piso
+                                                    else if(ans.equals("y") || ans.equals("yes") ){
+                                                     Organization.removeDonator(Organization.getdonatorList().get(j));
+                                                     System.out.println("Donator successfully Deleted ");
+                                                      }
+                                                 
+                                            
+                                             }
+                                             
+                                             
+                                        }
+                                    }
+                                }
+                            
+                 ex=true;
+                 break;
+                 
+                 case"3":
+                 for(int j=0;j<Organization.getbeneficiaryList().size();j++){
+                    Organization.getbeneficiaryList().get(j).receivedList.clear();}
+                    System.out.println("All receivedList have been cleared");
+                 ex=true;
+                 break;
+                 
+                 default:
+                  System.out.println("Invalid command");
+                  break;
+                }
+            }while(!ex);
+                  
             exit=true;  
             break;
             

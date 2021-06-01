@@ -1,4 +1,5 @@
-import java.util.*;
+
+        import java.util.*;
 public class Organization { //check wrappers
         private static String name;
         private static Admin admin;
@@ -61,7 +62,7 @@ public class Organization { //check wrappers
             }
             
         //αφαιρεί έναν donator απο τον οργανισμό
-        public void removeDonator(int donator) {donatorList.remove(donator);}
+        public static void removeDonator(Donator donator) {donatorList.remove(donator);}
         
         //εξαίρεση ελέγχει αν υπάρχει ήδη ο Βeneficiary που βάζουμε
         public static void insertBeneficiary(Beneficiary beneficiary) {
@@ -73,30 +74,34 @@ public class Organization { //check wrappers
          } 
          
          //αφαιρεί έναν Beneficiary απο τον οργανισμό 
-        public void removeBeneficiary(int beneficiary) {beneficiaryList.remove(beneficiary);}
+        public static void removeBeneficiary(Beneficiary beneficiary) {beneficiaryList.remove(beneficiary);}
     
         //υπάρχουσες κατηγορίες των entity και λίστα με όλα τα entity ανά συγκεκριμένη κατηγορία
         public static void listEntities() {for (Entity entity : entityList) { System.out.println(entity.getDetails()); }}
         
         //εμφανίζει τους δωρητές Donators
-        public void listDonators() {
+        public  static  void listDonators() {
+            int count=1;
             for (Donator donator : donatorList) 
-            { System.out.println(donator.getFirstName() + donator.getLastName() ); }
+            { System.out.println(count + ". " + donator.getFirstName() + " " + donator.getLastName() ); 
+            count++;}
         } 
         
         //εμφανίζει τους δωρητές Βeneficiary
-        public void listBeneficiary() {
+        public static void listBeneficiary() {
+            int count=1;
             for (Beneficiary beneficiary : beneficiaryList) 
-            { System.out.println(beneficiary.getFirstName() + beneficiary.getLastName() ); }
+            { System.out.println(count + ". " + beneficiary.getFirstName() + " " + beneficiary.getLastName());
+                count++; }
         }
         
         //προσδιορισμός entity (service-material) για εκτύπωση στο menu
-        public static void showEntityinCategory(String Category){
+        public static void showCategory(String Category){
             int counter=1;
             switch(Category){
                 case "1":
                     for(Entity i: entityList){
-                        if(i.getEntityCategory()==1){
+                        if(i.getCategory()==1){
                             System.out.println(""+ counter + " " + i.getName());
                             counter++;
                         }
@@ -105,7 +110,7 @@ public class Organization { //check wrappers
                     
                 case "2":
                     for(Entity i: entityList){
-                        if(i.getEntityCategory()==2){
+                        if(i.getCategory()==2){
                             System.out.println(""+ counter + " " + i.getName());
                             counter++;
                         }

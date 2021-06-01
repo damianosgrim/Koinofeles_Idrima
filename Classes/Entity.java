@@ -3,6 +3,7 @@ public abstract class Entity{
     private String name; //ονομα δωρεάς
     private String description; //συντομη περγραφή
     private int id; //κωδικός είδους
+     private static int CID = 0; // βοηθητικη μεταβλητη για αναθεση id
     
     //getter-setter για όνομα δωρεάς
     public String getName(){return name;}
@@ -13,12 +14,19 @@ public abstract class Entity{
     public void setDescription(String description){this.description=description;}
     
     //getter-setter για ID δωρεάς
-    public int getId(){return id;}
+    public int getId(){
+         ++CID;
+        id = CID;
+        return id;
+    }
     public void setId(int id){this.id=id;}
     
     //επιστροφή πληροφοριών
     public String getEntityInfo(){
-        return "Name of donation: " +name + " and is " + description + " ID: " + id;
+        String cat="" ; // μεταβλητη για διαχωρισμο Id εμφανιζει M:material. S:service
+        if(getCategory()==1){ cat="M" ;} 
+        else if(getCategory()==2){ cat="S";}
+        return "Name of donation: " +name + " and is " + description + " ID:  " + cat  + id; 
     }
     
     //αφηρημένη μέθοδος
@@ -30,5 +38,6 @@ public abstract class Entity{
     }
     
     //μέθοδος που δηλώνεται για να χρησιμοποιηθεί στην main ώστε να εκτυπώνει στον Admin την ποσότητα των Materials
-    public abstract int getEntityCategory();
+    public abstract int getCategory();
 }
+   

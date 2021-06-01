@@ -13,7 +13,7 @@ public class Service extends Entity{
     }
     
     //μέθοδος που δηλώνεται για να χρησιμοποιηθεί στην main ώστε να εκτυπώνει στον Admin την ποσότητα των Services
-    public int getEntityCategory(){
+    public int getCategory(){
         return EntityCategory;
     }   
 }

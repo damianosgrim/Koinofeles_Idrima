@@ -22,6 +22,7 @@ public class Material extends Entity{
         return ("level1: "+ level1 + " level2 " + level2 + " level3 " + level3 + " this object is material");
         
     }
+     
     
     //μέθοδος για την εκτύπωση πληροφοριών και λεπτομεριών //@override    
     public String toString(){
@@ -29,7 +30,7 @@ public class Material extends Entity{
      }
     
     //μέθοδος που δηλώνεται για να χρησιμοποιηθεί στην main ώστε να εκτυπώνει στον Admin την ποσότητα των Materials
-    public int getEntityCategory(){
+    public int getCategory(){
         return EntityCategory;
     }
 }

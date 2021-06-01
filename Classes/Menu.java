@@ -16,76 +16,87 @@ public static void Scan() throws NullLineReadedException{
      Donator d; //Βοηθητική μεταβλητή
      ans=scan.nextLine();
      phone=ans;
-for(int i = 0; i<Organization.getdonatorList().size(); i++){
-         if(Organization.getdonatorList().get(i).getPhone().equals(ans)){
+      boolean exit=false;
+      for(int i = 0; i<Organization.getdonatorList().size(); i++){
+           if(Organization.getdonatorList().get(i).getPhone().equals(ans)){
+            
              search=1;
              d=Organization.getdonatorList().get(i);
              System.out.println("The phone number " + ans + " has been already added in the system as donator");
+             do{
              System.out.println("Do you want to sign in as: " + d.getFirstName() + " " + d.getLastName() +"? (y/n)");
              ans=scan.nextLine();
-             if ((ans.equals("n") || ans.equals("no") )) {LogOut();}
-            else if(ans.equals("y") || ans.equals("yes") ) {
-            Menu.MenuD(d); //Καλέι την μέθοδο με όρισμα την βοηθητική μεταβλητή d τύπου Donator με βάση το τηλέφωνο που βρέθηκε
-            } 
+             if ((ans.equals("n") || ans.equals("no") )) {exit=true; LogOut();}
+             else if(ans.equals("y") || ans.equals("yes") ) {
+                exit=true;
+              Menu.MenuD(d); //Καλέι την μέθοδο με όρισμα την βοηθητική μεταβλητή d τύπου Donator με βάση το τηλέφωνο που βρέθηκε
+             } 
+           }while(!exit);
         } 
-        
-} 
-for(int i = 0; i<Organization.getbeneficiaryList().size(); i++){
+        } 
+     for(int i = 0; i<Organization.getbeneficiaryList().size(); i++){
          if(Organization.getbeneficiaryList().get(i).getPhone().equals(ans)){
               search=2;
               b=Organization.getbeneficiaryList().get(i);
               System.out.println("The phone number " + ans + " has been already added in the system as beneficiary");
+              do{
              System.out.println("Do you want to sign in as: " + b.getFirstName() + " " + b.getLastName() +"? (y/n)");
              ans=scan.nextLine();
-              if ((ans.equals("n") || ans.equals("no") )) {ExitFromProgram();}
+              if ((ans.equals("n") || ans.equals("no") )) {exit=true; ExitFromProgram();}
               else if(ans.equals("y") || ans.equals("yes") ) {
+                  exit=true;
               Menu.MenuB(b);  //Καλέι την μέθοδο με όρισμα την βοηθητική μεταβλητή b τύπου Benefiaciary με βάση το τηλέφωνο που βρέθηκε
              }  
-         }
-} 
-if (Organization.getAdmin().getPhone().equals(ans)) {
-    search = 3;
-    System.out.println("The phone number " + ans + " has been already added in the system as admin");
-     System.out.println("Do you want to sign in as: " + Organization.getAdmin().getFirstName() + " " + Organization.getAdmin().getLastName() +"? (y/n)");
-    ans=scan.nextLine();
-    if ((ans.equals("n") || ans.equals("no") )) {ExitFromProgram();}
-    else if(ans.equals("y") || ans.equals("yes") ) {
-    Menu.MenuA(Organization.getAdmin()); 
-    }
-}
-
-
-if(search==0) {
-    System.out.println("Do you want to sign up in our system? (y/n)");
-    ans=scan.nextLine();
-    while (ans.equals("")) {
-       System.out.println("Do you want to sign up in our system? (y/n)"); 
-       ans=scan.nextLine(); }
-    if ((ans.equals("n") || ans.equals("no") )) {ExitFromProgram();}
-    else if(ans.equals("y") || ans.equals("yes") ) {
-        boolean exit=false;
-        do{
-        System.out.println("Do you want to sign up as (1)Beneficiary or (2)Donator? (1/2)");
-        ans=scan.nextLine();
-        switch (ans) {
-            case "1": 
-            Menu.SignB();
-            exit=true;
-            break;
-            
-            case "2": 
-            Menu.SignD();
-            exit=true;
-            break;
-            
-            default: 
-                System.out.println("Invalid command!");
-            break;   
+            }while(!exit);
         }
-    }while(!exit);
+      } 
+     if (Organization.getAdmin().getPhone().equals(ans)) {
+         search = 3;
+         System.out.println("The phone number " + ans + " has been already added in the system as admin");
+         do{
+         System.out.println("Do you want to sign in as: " + Organization.getAdmin().getFirstName() + " " + Organization.getAdmin().getLastName() +"? (y/n)");
+         ans=scan.nextLine();
+         if ((ans.equals("n") || ans.equals("no") )) {exit=true; ExitFromProgram();}
+        else if(ans.equals("y") || ans.equals("yes") ) {
+            exit=true;
+        Menu.MenuA(Organization.getAdmin()); 
+        }
+       }while(!exit);
+     }
 
-    } 
-}
+
+     if(search==0) {
+         boolean ex= false;
+         do{
+        System.out.println("Do you want to sign up in our system? (y/n)");
+        ans=scan.nextLine();
+        if ((ans.equals("n") || ans.equals("no") )) {ex=true; ExitFromProgram();}
+        else if(ans.equals("y") || ans.equals("yes") ) {
+            ex=true;
+            exit=false;
+            do{
+            System.out.println("Do you want to sign up as (1)Beneficiary or (2)Donator? (1/2)");
+            ans=scan.nextLine();
+            switch (ans) {
+                case "1": 
+                Menu.SignB();
+                exit=true;
+                break;
+                
+                case "2": 
+                Menu.SignD();
+                exit=true;
+                break;
+                
+                default: 
+                    System.out.println("Invalid command!");
+                break;   
+            }
+        }while(!exit);
+
+    }
+    }while(!ex);
+  }
 }
 
 //Μέθοδος εγρραφής χρήστη ως Beneficiary
@@ -352,73 +363,100 @@ public static void MenuA(Admin a)  {
             ans=scan.nextLine();
             switch(ans){
                 case"1":
+                boolean e =false;
+                boolean e1=false;
+                boolean e2=false;
                  Organization.listBeneficiary();
+                 do{
                  System.out.println("Choose one Beneficiary by last name");
                  ans=scan.nextLine();
                 for(Beneficiary i:Organization.getbeneficiaryList()){
                                     if(ans.equals(i.getLastName())){
                                         for(int j=0;j<Organization.getbeneficiaryList().size();j++){
-                                             if(Organization.getbeneficiaryList().get(j).getLastName().equals(ans)){
+                                        if(Organization.getbeneficiaryList().get(j).getLastName().equals(ans)){
+                                            e=true;
                                                 System.out.println(Organization.getbeneficiaryList().get(j).getreceivedList());
-                                                
+                                                do{
                                                 System.out.println("Do you want to delete the list? (y/n)");
                                                 ans=scan.nextLine();
                                                  if ((ans.equals("n") || ans.equals("no") )) {
+                                                     e1=true;
+                                                     do{
                                                      System.out.println("Do you want to delete this Beneficiary? (y/n)");
                                                      ans=scan.nextLine();
-                                                     if ((ans.equals("n") || ans.equals("no") )) {continue;} // pame piso
+                                                     if ((ans.equals("n") || ans.equals("no") )) {e2=true; continue;} // pame piso
                                                     else if(ans.equals("y") || ans.equals("yes") ){
                                                      Organization.removeBeneficiary(Organization.getbeneficiaryList().get(j));
                                                      System.out.println("Beneficiary successfully Deleted ");
+                                                     e2=true;
                                                       }
-                                                 } // pame piso
+                                                      else{e2=false; System.out.println("Invalid command");}
+                                                 } while(!e2);
+                                                }
+                                            
                                                 else if(ans.equals("y") || ans.equals("yes") ){
+                                                    e1=true;
                                                 Organization.getbeneficiaryList().get(j).receivedList.clear();
                                                  System.out.println("ReceivedList successfully Deleted ");
+                                                 do{
                                                  System.out.println("Do you want to delete this Beneficiary? (y/n)");
                                                   ans=scan.nextLine();
-                                                  if ((ans.equals("n") || ans.equals("no") )) {continue;} // pame piso
+                                                  if ((ans.equals("n") || ans.equals("no") )) {e2=true; continue;} // pame piso
                                                  else if(ans.equals("y") || ans.equals("yes") ){
                                                    Organization.removeBeneficiary(Organization.getbeneficiaryList().get(j));
                                                      System.out.println("Beneficiary successfully Deleted ");
+                                                     e2=true;
                                                 } 
-                                            
-                                             }
-                                             
-                                             
+                                                 else{e2=false; System.out.println("Invalid command");}
+                                                }while(!e2);
+                                                }   
+                                
+                                            }while(!e1);
                                         }
-                                    }
-                                }
                             }
+                        }
+                    }
+                }while(!e);
                                     
                  ex=true;
                  break;
                  
                  case"2":
+                 e=false;
+                 e1=false;
+                 e2=false;
                  Organization.listDonators();
-                  System.out.println("Choose one Donator by last name");
-                 ans=scan.nextLine();
-                for(Donator i:Organization.getdonatorList()){
+                  do{
+                          System.out.println("Choose one Donator by last name");
+                          ans=scan.nextLine();
+                 
+                      for(Donator i:Organization.getdonatorList()){
                                     if(ans.equals(i.getLastName())){
                                         for(int j=0;j<Organization.getdonatorList().size();j++){
+                                            e=true;
+                                            do{
                                              if(Organization.getdonatorList().get(j).getLastName().equals(ans)){
                                                 System.out.println(Organization.getdonatorList().get(j).getoffersList());
-                                                
+                                                e1=true;
+                                                do{
                                                      System.out.println("Do you want to delete this Donator? (y/n)");
                                                      ans=scan.nextLine();
-                                                     if ((ans.equals("n") || ans.equals("no") )) {continue;} // pame piso
+                                                     if ((ans.equals("n") || ans.equals("no") )) {e2=true; continue;} // pame piso
                                                     else if(ans.equals("y") || ans.equals("yes") ){
+                                                        e2=true;
                                                      Organization.removeDonator(Organization.getdonatorList().get(j));
                                                      System.out.println("Donator successfully Deleted ");
                                                       }
-                                                 
-                                            
-                                             }
+                                                      else{e2=false; System.out.println("Invalid command");}
+                                                    }while(!e2);
+                                                 }
+                                            }while(!e1);
                                              
                                              
                                         }
                                     }
                                 }
+                    } while(!e);
                             
                  ex=true;
                  break;

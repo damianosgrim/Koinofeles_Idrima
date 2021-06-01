@@ -2,8 +2,11 @@ import java.util.*;  //wrappers
 public class Donator extends User {
 
     //δημιουργία λίστας για την καταχώρηση όσων επιθυμεί ο Donator
-    ArrayList<Offers> offersList = new ArrayList<Offers>();
+    static ArrayList<Offers> offersList = new ArrayList<Offers>();
     
+     public static ArrayList<Offers> getoffersList(){
+        return  offersList;
+    }
     //constructor χωρίς ορίσματα
     public Donator(){}
     

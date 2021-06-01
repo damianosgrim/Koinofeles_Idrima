@@ -15,8 +15,10 @@ public class Beneficiary extends User {
     public void setNoPersons(int noPersons) {this.noPersons=noPersons;}
     
     //λίστα με τις παροχές που έχει λάβει ο Beneficiary
-    ArrayList<RequestDonationList> receivedList = new ArrayList<RequestDonationList>(); 
-    
+    static ArrayList<RequestDonationList> receivedList = new ArrayList<RequestDonationList>(); 
+     public static ArrayList<RequestDonationList> getreceivedList(){
+        return receivedList;
+    }
     //λίστα με τις παροχές που επιθυμεί να λάβει ο Beneficiary
     ArrayList<Request> requestsList = new ArrayList<Request>();
 }

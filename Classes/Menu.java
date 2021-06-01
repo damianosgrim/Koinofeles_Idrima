@@ -1,6 +1,6 @@
 import java.util.*;
 import java.io.*;
-import java.lang.*;
+import java.lang.*; //Για την ParseInt
 public class Menu {
      static Scanner scan = new Scanner(System.in);
      private static String ans;
@@ -42,7 +42,7 @@ public static void Scan() throws NullLineReadedException{
               do{
              System.out.println("Do you want to sign in as: " + b.getFirstName() + " " + b.getLastName() +"? (y/n)");
              ans=scan.nextLine();
-              if ((ans.equals("n") || ans.equals("no") )) {exit=true; ExitFromProgram();}
+              if ((ans.equals("n") || ans.equals("no") )) {exit=true; LogOut();}
               else if(ans.equals("y") || ans.equals("yes") ) {
                   exit=true;
               Menu.MenuB(b);  //Καλέι την μέθοδο με όρισμα την βοηθητική μεταβλητή b τύπου Benefiaciary με βάση το τηλέφωνο που βρέθηκε
@@ -56,7 +56,7 @@ public static void Scan() throws NullLineReadedException{
          do{
          System.out.println("Do you want to sign in as: " + Organization.getAdmin().getFirstName() + " " + Organization.getAdmin().getLastName() +"? (y/n)");
          ans=scan.nextLine();
-         if ((ans.equals("n") || ans.equals("no") )) {exit=true; ExitFromProgram();}
+         if ((ans.equals("n") || ans.equals("no") )) {exit=true; LogOut();}
         else if(ans.equals("y") || ans.equals("yes") ) {
             exit=true;
         Menu.MenuA(Organization.getAdmin()); 
@@ -218,33 +218,100 @@ public static void MenuD(Donator d) {
         System.out.println("1.Add Offer  2.Show Offers  3.Commit  4.Back  5.Logout  6.Exit  (Enter the number of the option you want)");
         ans=scan.nextLine();
         switch (ans) {
-            case "1":
-            boolean ex=false;
-            System.out.println("Select what type of offer you want to add");
-            do{
-            System.out.println("1.Matterial  2.Offer (Press b to back)");
-            ans=scan.nextLine();
-            switch (ans) {
+        case "1":
+        boolean Case=false;
+         boolean ex=false;
+         do{
+            System.out.println("1.Material  2.Services (Press b to back)"  );
+            ans=scan.nextLine(); 
+            switch(ans){
                 case "1":
-                ex=true;
-                break;
-                
+                            Organization.showCategory(ans);
+                           do{
+                            System.out.print("Type the name of a material for more details:");
+                           ans=scan.nextLine();
+                            boolean found=false;
+                            for(Entity i:Organization.getentityList()){
+                                if(ans.equals(i.getName())){
+                                    for(int j=0;j<Organization.getentityList().size();j++){
+                                         if(Organization.getentityList().get(j).getName().equals(ans)){
+                                            System.out.println(Organization.getentityList().get(j). getEntityInfo());
+                                         }
+                                    found=true;
+                                    System.out.println("Do you want to donate this material? (y/n)");
+                                    ans=scan.nextLine();
+                                    if (ans.equals("n") || ans.equals("no") ) {break;}
+                                    else if (ans.equals("y") || ans.equals("yes")) {
+                                        System.out.println("Enter the quantity you want to donate");
+                                        ans=scan.nextLine();
+                                        //Κατασκευή αντιεκιμένου Request Donation
+                                        RequestDonation rq = new RequestDonation(i, Integer.parseInt(ans)); 
+                                        RequestDonationList.add(rq, 0.0);
+                                        //(An υπαρχει ήδη request don?)
+                                        System.out.println("You succesfully donated " + ans + " " + i.getName());
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+                        Case=true;
+                        if(found==false){System.out.println("The material doesn't exist!");} 
+        
+                          }while(!Case);
+                     
+                ex=false; //Για να ξανατρέξει
+                 
+                 break;
+            
                 case "2":
-                ex=true;
-                break;
-                
+                            Organization.showCategory(ans);
+                            do{
+                            System.out.print("Type the name of a service for more details:");
+                           ans=scan.nextLine();
+                            boolean found=false;
+                            for(Entity i:Organization.getentityList()){
+                                if(ans.equals(i.getName())){
+                                    for(int j=0;j<Organization.getentityList().size();j++){
+                                         if(Organization.getentityList().get(j).getName().equals(ans)){
+                                            System.out.println(Organization.getentityList().get(j). getEntityInfo());
+                                         }
+                                        found=true;
+                                        System.out.println("Do you want to donate this service? (y/n)");
+                                        ans=scan.nextLine();
+                                        if (ans.equals("n") || ans.equals("no") ) {break;}
+                                        else if (ans.equals("y") || ans.equals("yes")) {
+                                            System.out.println("Enter the hours of that service you want to donate");
+                                            ans=scan.nextLine();
+                                            //Κατασκευή αντιεκιμένου Request Donation
+                                            RequestDonation rq = new RequestDonation(i, Integer.parseInt(ans)); 
+                                            RequestDonationList.add(rq, 0.0);
+                                            //(An υπαρχει ήδη request don?)
+                                            System.out.println("You succesfully donated " + ans + " hours of " + i.getName());
+                                            break;
+                                            
+                                        }
+                                    }
+                                }
+                            }
+                                    Case= true;
+                            if(found==false){System.out.println("The service doesn't exist!");} 
+        
+                          }while(!Case);  
+                ex= false; //Για να ξανατρέξει   
+                 break;
+                 
                 case "b":
                 MenuD(d);
-                ex=true;
                 break;
                 
                 default: 
-            System.out.println("Invalid command!");
-            break;   
+                            System.out.println("Invalid command");
+                break;
             }
         }while(!ex);
         exit=true;
-            break;
+          break;
+      
             
             case "2": 
             exit=true;
@@ -297,7 +364,7 @@ public static void MenuA(Admin a)  {
              boolean Case=false;
              boolean ex=false;
              do{
-                System.out.println("1.Material  2.Services"  );
+                System.out.println("1.Material  2.Services (Press b to back)"  );
                 ans=scan.nextLine(); 
                 switch(ans){
                     case "1":
@@ -321,7 +388,7 @@ public static void MenuA(Admin a)  {
             
                               }while(!Case);
                          
-                    ex=true;
+                    ex=false; //Για να ξανατρέξει
                      
                      break;
                 
@@ -345,9 +412,13 @@ public static void MenuA(Admin a)  {
                                 if(found==false){System.out.println("The service doesn't exist!");} 
             
                               }while(!Case);  
-                    ex= true;    
+                    ex= false; //Για να ξανατρέξει   
                      break;
-                
+                     
+                    case "b":
+                    MenuA(a);
+                    break;
+                    
                     default: 
                                 System.out.println("Invalid command");
                     break;
@@ -359,113 +430,28 @@ public static void MenuA(Admin a)  {
             case "2": 
             ex=false;
             do{
-            System.out.println("1.List Beneficiaries  2.List Donators  3.Reset Beneficiaries Lists");
+            System.out.println("1.List Beneficiaries  2.List Donators  3.Reset Beneficiaries Lists (Press b to back)");
             ans=scan.nextLine();
             switch(ans){
-                case"1":
-                boolean e =false;
-                boolean e1=false;
-                boolean e2=false;
-                 Organization.listBeneficiary();
-                 do{
-                 System.out.println("Choose one Beneficiary by last name");
-                 ans=scan.nextLine();
-                for(Beneficiary i:Organization.getbeneficiaryList()){
-                                    if(ans.equals(i.getLastName())){
-                                        for(int j=0;j<Organization.getbeneficiaryList().size();j++){
-                                        if(Organization.getbeneficiaryList().get(j).getLastName().equals(ans)){
-                                            e=true;
-                                                System.out.println(Organization.getbeneficiaryList().get(j).getreceivedList());
-                                                do{
-                                                System.out.println("Do you want to delete the list? (y/n)");
-                                                ans=scan.nextLine();
-                                                 if ((ans.equals("n") || ans.equals("no") )) {
-                                                     e1=true;
-                                                     do{
-                                                     System.out.println("Do you want to delete this Beneficiary? (y/n)");
-                                                     ans=scan.nextLine();
-                                                     if ((ans.equals("n") || ans.equals("no") )) {e2=true; continue;} // pame piso
-                                                    else if(ans.equals("y") || ans.equals("yes") ){
-                                                     Organization.removeBeneficiary(Organization.getbeneficiaryList().get(j));
-                                                     System.out.println("Beneficiary successfully Deleted ");
-                                                     e2=true;
-                                                      }
-                                                      else{e2=false; System.out.println("Invalid command");}
-                                                 } while(!e2);
-                                                }
-                                            
-                                                else if(ans.equals("y") || ans.equals("yes") ){
-                                                    e1=true;
-                                                Organization.getbeneficiaryList().get(j).receivedList.clear();
-                                                 System.out.println("ReceivedList successfully Deleted ");
-                                                 do{
-                                                 System.out.println("Do you want to delete this Beneficiary? (y/n)");
-                                                  ans=scan.nextLine();
-                                                  if ((ans.equals("n") || ans.equals("no") )) {e2=true; continue;} // pame piso
-                                                 else if(ans.equals("y") || ans.equals("yes") ){
-                                                   Organization.removeBeneficiary(Organization.getbeneficiaryList().get(j));
-                                                     System.out.println("Beneficiary successfully Deleted ");
-                                                     e2=true;
-                                                } 
-                                                 else{e2=false; System.out.println("Invalid command");}
-                                                }while(!e2);
-                                                }   
-                                
-                                            }while(!e1);
-                                        }
-                            }
-                        }
-                    }
-                }while(!e);
-                                    
-                 ex=true;
+                 case"1":
+                 ListBen();
+                 ex=false;
                  break;
                  
                  case"2":
-                 e=false;
-                 e1=false;
-                 e2=false;
-                 Organization.listDonators();
-                  do{
-                          System.out.println("Choose one Donator by last name");
-                          ans=scan.nextLine();
-                 
-                      for(Donator i:Organization.getdonatorList()){
-                                    if(ans.equals(i.getLastName())){
-                                        for(int j=0;j<Organization.getdonatorList().size();j++){
-                                            e=true;
-                                            do{
-                                             if(Organization.getdonatorList().get(j).getLastName().equals(ans)){
-                                                System.out.println(Organization.getdonatorList().get(j).getoffersList());
-                                                e1=true;
-                                                do{
-                                                     System.out.println("Do you want to delete this Donator? (y/n)");
-                                                     ans=scan.nextLine();
-                                                     if ((ans.equals("n") || ans.equals("no") )) {e2=true; continue;} // pame piso
-                                                    else if(ans.equals("y") || ans.equals("yes") ){
-                                                        e2=true;
-                                                     Organization.removeDonator(Organization.getdonatorList().get(j));
-                                                     System.out.println("Donator successfully Deleted ");
-                                                      }
-                                                      else{e2=false; System.out.println("Invalid command");}
-                                                    }while(!e2);
-                                                 }
-                                            }while(!e1);
-                                             
-                                             
-                                        }
-                                    }
-                                }
-                    } while(!e);
-                            
-                 ex=true;
+                 ListDon();
+                 ex=false;
                  break;
                  
                  case"3":
                  for(int j=0;j<Organization.getbeneficiaryList().size();j++){
                     Organization.getbeneficiaryList().get(j).receivedList.clear();}
                     System.out.println("All receivedList have been cleared");
-                 ex=true;
+                 ex=false;
+                 break;
+                 
+                 case"b":
+                 MenuA(a);
                  break;
                  
                  default:
@@ -504,6 +490,106 @@ public static void MenuA(Admin a)  {
     }while(!exit);
 }
 
+//Μέθοδος υπομενου του Admin για την διαχείρηση των Beneficiary
+public static void ListBen() {
+boolean e =false;
+boolean e1=false;
+boolean e2=false;
+ Organization.listBeneficiary();
+ do{
+ System.out.println("Choose one Beneficiary by last name (Press b to go back)");
+ ans=scan.nextLine();
+ if (ans.equals("b")) {break;}
+for(Beneficiary i:Organization.getbeneficiaryList()){
+                    if(ans.equals(i.getLastName())){
+                        for(int j=0;j<Organization.getbeneficiaryList().size();j++){
+                        if(Organization.getbeneficiaryList().get(j).getLastName().equals(ans)){
+                            e=true;
+                                System.out.println(Organization.getbeneficiaryList().get(j).getreceivedList());
+                                do{
+                                System.out.println("Do you want to delete the list? (y/n)");
+                                ans=scan.nextLine();
+                                 if ((ans.equals("n") || ans.equals("no") )) {
+                                     e1=true;
+                                     do{
+                                     System.out.println("Do you want to delete this Beneficiary? (y/n)");
+                                     ans=scan.nextLine();
+                                     if ((ans.equals("n") || ans.equals("no") )) {e2=true; break;} // pame piso
+                                    else if(ans.equals("y") || ans.equals("yes") ){
+                                     Organization.removeBeneficiary(Organization.getbeneficiaryList().get(j));
+                                     System.out.println("Beneficiary successfully Deleted ");
+                                     e2=true;
+                                     break;
+                                      }
+                                      else{e2=false; System.out.println("Invalid command");}
+                                 } while(!e2);
+                                }
+                            
+                                else if(ans.equals("y") || ans.equals("yes") ){
+                                    e1=true;
+                                Organization.getbeneficiaryList().get(j).receivedList.clear();
+                                 System.out.println("ReceivedList successfully Deleted ");
+                                 do{
+                                 System.out.println("Do you want to delete this Beneficiary? (y/n)");
+                                  ans=scan.nextLine();
+                                  if ((ans.equals("n") || ans.equals("no") )) {e2=true; break;} // pame piso
+                                 else if(ans.equals("y") || ans.equals("yes") ){
+                                   Organization.removeBeneficiary(Organization.getbeneficiaryList().get(j));
+                                     System.out.println("Beneficiary successfully Deleted ");
+                                     e2=true;
+                                     break;
+                                } 
+                                 else{e2=false; System.out.println("Invalid command");}
+                                }while(!e2);
+                                }   
+                
+                            }while(!e1);
+                        }
+            }
+        }
+    }
+}while(!e); 
+}
+ 
+//Μέθοδος υπομενου του Admin για την διαχείρηση των Donator 
+public static void ListDon() {
+boolean e=false;
+boolean e1=false;
+boolean e2=false;
+Organization.listDonators();
+do{
+      System.out.println("Choose one Donator by last name (Press b to go back)");
+      ans=scan.nextLine();
+    if (ans.equals("b")) {break;}
+  for(Donator i:Organization.getdonatorList()){
+                if(ans.equals(i.getLastName())){
+                    for(int j=0;j<Organization.getdonatorList().size();j++){
+                        e=true;
+                        do{
+                         if(Organization.getdonatorList().get(j).getLastName().equals(ans)){
+                            System.out.println(Organization.getdonatorList().get(j).getoffersList());
+                            e1=true;
+                            do{
+                                 System.out.println("Do you want to delete this Donator? (y/n)");
+                                 ans=scan.nextLine();
+                                 if ((ans.equals("n") || ans.equals("no") )) {e2=true; break;} // pame piso
+                                else if(ans.equals("y") || ans.equals("yes") ){
+                                    e2=true;
+                                 Organization.removeDonator(Organization.getdonatorList().get(j));
+                                 System.out.println("Donator successfully Deleted ");
+                                 break;
+                                  }
+                                  else{e2=false; System.out.println("Invalid command");}
+                                }while(!e2);
+                             }
+                        }while(!e1);  
+                    }
+                }
+            }
+} while(!e);
+}
+                            
+ 
 //Αποσύνδεση χρήστη και επιστοροφή στην αρχική σελίδα
 public static void LogOut() {
     System.out.println("You have log out and returned to home page");

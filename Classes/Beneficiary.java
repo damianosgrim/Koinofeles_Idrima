@@ -1,4 +1,4 @@
-import java.util.*;  //wrappers
+import java.util.*;  
 public class Beneficiary extends User {
     int noPersons=1; //αριθμός ατόμων της οικογένειας
     

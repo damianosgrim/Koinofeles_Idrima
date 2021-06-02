@@ -1,11 +1,15 @@
 import java.util.*;
 
-
 public class Offers extends RequestDonationList{
-    public static void commit(){  
-       ArrayList <RequestDonation> rdEntitiesCopy = new  ArrayList<RequestDonation> (currentDonations); //ενημέρωση των currentDonations με το περιεχόμενο rdEntities
+    /* public static void commit(Organization org, Donator d){  
+    for (RequestDonation rd:d.getoffersList().getrdEntities())
+    { 
+        org.getCurrentDon().add(rd,org);
+    }
    
-    rdEntities.clear(); //εκαθάριση της rdEntities
-    } 
+    Donator.getoffersList().clear(); //εκαθάριση της rdEntities
+    } */
+  /*  public static void commit(){
+        for (int i=0; i<getrdEntities().size(); i++) {
+            addCuDon(get(i).getrdEntities()) ; } */
 }
-

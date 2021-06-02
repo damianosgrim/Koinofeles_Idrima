@@ -170,15 +170,15 @@ public static void MenuB(Beneficiary b) {
     ans=scan.nextLine();
         switch (ans) {
             case "1":
-            exit=true;
+        
             break;
             
             case "2": 
-            exit=true;
+            
             break;
             
             case "3":
-            exit=true;
+            
             break;
             
             case "4": 
@@ -314,11 +314,11 @@ public static void MenuD(Donator d) {
       
             
             case "2": 
-            exit=true;
+    
             break;
             
             case "3": 
-            exit=true;
+            
             break;
             
             case "4": 

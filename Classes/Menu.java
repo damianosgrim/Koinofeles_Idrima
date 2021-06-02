@@ -170,8 +170,100 @@ public static void MenuB(Beneficiary b) {
     ans=scan.nextLine();
         switch (ans) {
             case "1":
+         boolean Case=false;
+         boolean ex=false;
+         do{
+            System.out.println("1.Material  2.Services (Press b to back)"  );
+            ans=scan.nextLine(); 
+            switch(ans){
+                case "1":
+                            Organization.showCategory(ans);
+                           do{
+                            System.out.print("Type the name of a material for more details:");
+                           ans=scan.nextLine();
+                            boolean found=false;
+                            for(Entity i:Organization.getentityList()){
+                                if(ans.equals(i.getName())){
+                                    for(int j=0;j<Organization.getentityList().size();j++){
+                                         if(Organization.getentityList().get(j).getName().equals(ans)){
+                                            System.out.println(Organization.getentityList().get(j). getEntityInfo());
+                                         }
+                                    found=true;
+                                    System.out.println("Do you want to receive this material? (y/n)");
+                                    ans=scan.nextLine();
+                                    if (ans.equals("n") || ans.equals("no") ) {break;}
+                                    else if (ans.equals("y") || ans.equals("yes")) {
+                                        System.out.println("Enter the quantity you want to receive");
+                                        ans=scan.nextLine();
+                                        //Κατασκευή αντιεκιμένου Request Donation
+                                        RequestDonation rq = new RequestDonation(i, Integer.parseInt(ans)); 
+                                        RequestDonationList.remove(rq);
+                                        //(An υπαρχει ήδη request don?)
+                                        System.out.println("You succesfully recieved " + ans + " " + i.getName());
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+                        Case=true;
+                        if(found==false){System.out.println("The material doesn't exist!");} 
         
-            break;
+                          }while(!Case);
+                     
+                ex=false; //Για να ξανατρέξει
+                 
+                 break;
+            
+                case "2":
+                            Organization.showCategory(ans);
+                            do{
+                            System.out.print("Type the name of a service for more details:");
+                           ans=scan.nextLine();
+                            boolean found=false;
+                            for(Entity i:Organization.getentityList()){
+                                if(ans.equals(i.getName())){
+                                    for(int j=0;j<Organization.getentityList().size();j++){
+                                         if(Organization.getentityList().get(j).getName().equals(ans)){
+                                            System.out.println(Organization.getentityList().get(j). getEntityInfo());
+                                         }
+                                        found=true;
+                                        System.out.println("Do you want to receive this service? (y/n)");
+                                        ans=scan.nextLine();
+                                        if (ans.equals("n") || ans.equals("no") ) {break;}
+                                        else if (ans.equals("y") || ans.equals("yes")) {
+                                            System.out.println("Enter the hours of that service you want to recieve");
+                                            ans=scan.nextLine();
+                                            //Κατασκευή αντιεκιμένου Request Donation
+                                            RequestDonation rq = new RequestDonation(i, Integer.parseInt(ans)); 
+                                            RequestDonationList.remove(rq);
+                                            //(An υπαρχει ήδη request don?)
+                                            System.out.println("You succesfully received " + ans + " hours of " + i.getName());
+                                            break;
+                                            
+                                        }
+                                    }
+                                }
+                            }
+                                    Case= true;
+                            if(found==false){System.out.println("The service doesn't exist!");} 
+        
+                          }while(!Case);  
+                ex= false; //Για να ξανατρέξει   
+                 break;
+                 
+                case "b":
+                MenuB(b);
+                break;
+                
+                default: 
+                            System.out.println("Invalid command");
+                break;
+            }
+        }while(!ex);
+        exit=true;
+          break;
+      
+    
             
             case "2": 
             

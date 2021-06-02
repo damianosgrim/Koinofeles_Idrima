@@ -1,5 +1,4 @@
-
-        import java.util.*;
+import java.util.*;
 public class Organization { //check wrappers
         private static String name;
         private static Admin admin;
@@ -31,10 +30,10 @@ public class Organization { //check wrappers
         {this.name=name;
          this.admin=admin; }
          
-         public static ArrayList<RequestDonationList> currentDonations = new ArrayList<RequestDonationList>();
-           /* public static RequestDonationList currentDonations; //pithani prosthiki methodou add apo tin RDL ston setter
+
+         public static RequestDonationList currentDonations; 
         public static RequestDonationList getCurrentDon(){return currentDonations;}
-        public static void setCurrentDon(RequestDonationList currDon) {currentDonations=currDon;}*/
+        public static void setCurrentDon(RequestDonationList currDon) {currentDonations=currDon;}
           
         //getter-setter για admin 
         public static Admin getAdmin() {return admin;}
@@ -48,7 +47,10 @@ public class Organization { //check wrappers
             else{
                 entityList.add(entity);}
         }
-         
+        
+       /* public void addCuDon(RequestDonation rd){
+            currentDonations.add(rd); } */
+        
         //διαγράφει ένα entity
         public void removeEntity(int entity) {entityList.remove(entity);}
         

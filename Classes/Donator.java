@@ -1,4 +1,4 @@
-import java.util.*;  //wrappers
+import java.util.*;  
 public class Donator extends User {
 
     //δημιουργία λίστας για την καταχώρηση όσων επιθυμεί ο Donator

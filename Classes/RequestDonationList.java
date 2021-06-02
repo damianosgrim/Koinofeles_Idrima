@@ -36,7 +36,7 @@ public class RequestDonationList{
     } 
 
     //διαγραφή ενός requestdonation από την λίστα
-     public void remove(RequestDonation requestdonation){
+     public static void remove(RequestDonation requestdonation){
         rdEntities.remove(requestdonation);  
     }
     

@@ -1,13 +1,16 @@
 public class Request extends RequestDonationList{
     
-    //ελέγχει αν η ποσότητα του entity είναι διαθέσιμη στον οργανισμό  //@override
-    public static void add(RequestDonation requestdonation, double quant){  // εξαιρεση!!!
+    //ελέγχει αν το entity είναι διαθέσιμο //@override
+    public static void add(RequestDonation requestdonation, double quant){  
          for (int i = 0; i<rdEntities.size(); i++)
         {
-        if(rdEntities.get(i).getEntity().getId()== requestdonation.getEntity().getId()) {
+             //εάν είναι ανανεώνει την ποσότητα
+        if(rdEntities.get(i).getEntity().getId()== requestdonation.getEntity().getId()) 
+        {
             requestdonation.setQuantity(requestdonation.getQuantity()+quant);
             rdEntities.get(i).setQuantity(requestdonation.getQuantity()+quant);
         }
+             //αλλιώς δημιουργεί καινούργιο
         else if (rdEntities.get(i).getEntity().getId() != requestdonation.getEntity().getId()){
         rdEntities.add(requestdonation);}
     } 
@@ -22,7 +25,7 @@ public class Request extends RequestDonationList{
     }
     
     //ελέγχει την ποσότητα ενός RequestDonation και αν είναι επιτρεπτή για των αριθμό μελών που δηλώνει ο Beneficiary
-    public boolean validRequestDonation(Beneficiary b, RequestDonation d){  // ελεγχος ποσοτητας
+    public boolean validRequestDonation(Beneficiary b, RequestDonation d){  // έλεγχος ποσοτητας
         boolean l=false;
        if(b.getNoPersons()==1) {
            if(d.getQuantity()<=Material.getLevel1()){

@@ -62,14 +62,14 @@ org.insertBeneficiary(b1);
 org.insertBeneficiary(b2);
 org.insertDonator(d);
 
-//εξαίρεση
+
 try
 {
-    menu.Scan();
+    menu.Scan(); //καλεί την scan της menu
 }
-catch (NullLineReadedException nlre)
+catch (NullLineReadedException nlre) //εξαίρεση για κενή γραμμή
 {
-    nlre.printStackTrace();
+    nlre.printStackTrace(); 
 }
 }
 }

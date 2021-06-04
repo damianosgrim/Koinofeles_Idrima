@@ -39,6 +39,9 @@ public class Organization {
         public static Admin getAdmin() {return admin;}
         public void setAdmin(Admin admin) {this.admin=admin;}
         
+        //getter για το όνομα του οργανισμού
+        public static String getOrgName() {return name;}
+        
         //εξαίρεση ελέγχει αν υπάρχει ήδη το entity που βάζουμε
         public void addEntity(Entity entity) {
              if(entityList.contains(entity)){

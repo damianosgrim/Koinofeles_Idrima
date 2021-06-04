@@ -13,7 +13,7 @@ public class RequestDonation
     //επιστρέφει το id για ένα requestdonation 
     public int get_id(){return entity.getId();} 
     
-    //τι κάνει;
+    //getter για το entity
     public Entity getEntity(){return entity;}
     
     //setter-getter για το Quantity

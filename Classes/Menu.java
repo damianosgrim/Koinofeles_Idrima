@@ -1,6 +1,6 @@
 import java.util.*;
 import java.io.*;
-import java.lang.*; //Για την ParseInt
+import java.lang.*; //Για την ParseInt μετατροπή string σε int
 public class Menu {
      static Scanner scan = new Scanner(System.in);
      private static String ans;

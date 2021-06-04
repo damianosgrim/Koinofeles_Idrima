@@ -1,5 +1,5 @@
 import java.util.*;
-public class Organization { //check wrappers
+public class Organization { 
         private static String name;
         private static Admin admin;
         
@@ -30,8 +30,8 @@ public class Organization { //check wrappers
         {this.name=name;
          this.admin=admin; }
          
-
-         public static RequestDonationList currentDonations; 
+        //δημιουργία αντικειμένου currentDonations τύπου RequestDonationList
+        public static RequestDonationList currentDonations; 
         public static RequestDonationList getCurrentDon(){return currentDonations;}
         public static void setCurrentDon(RequestDonationList currDon) {currentDonations=currDon;}
           
@@ -49,15 +49,16 @@ public class Organization { //check wrappers
         }
         
        /* public void addCuDon(RequestDonation rd){
-            currentDonations.add(rd); } */
+            currentDonations.add(rd); } */              //μέθοδος που θα προσέθετε ένα requestdonation στην currentdonation
         
         //διαγράφει ένα entity
         public void removeEntity(int entity) {entityList.remove(entity);}
         
-        //εξαίρεση ελέγχει αν υπάρχει ήδη ο donator που βάζουμε
+        //προσθήκη donator στην donator list
         public static void insertDonator(Donator donator) {
             if(donatorList.contains(donator)){
-                 throw new IllegalArgumentException("This donator is already in the list.");
+                    //εξαίρεση ελέγχει αν υπάρχει ήδη ο donator που βάζουμε
+                 throw new IllegalArgumentException("This donator is already in the list."); 
                 }
             else{
                 donatorList.add(donator);}
@@ -66,10 +67,12 @@ public class Organization { //check wrappers
         //αφαιρεί έναν donator απο τον οργανισμό
         public static void removeDonator(Donator donator) {donatorList.remove(donator);}
         
-        //εξαίρεση ελέγχει αν υπάρχει ήδη ο Βeneficiary που βάζουμε
+        
+        //προσθήκη benenficiary στην beneficiarylist
         public static void insertBeneficiary(Beneficiary beneficiary) {
             if(beneficiaryList.contains(beneficiary)){
-                 throw new IllegalArgumentException("This beneficiary is already in the list.");
+                    //εξαίρεση ελέγχει αν υπάρχει ήδη ο beneficiary που βάζουμε
+                 throw new IllegalArgumentException("This beneficiary is already in the list."); 
                 }
             else{
                 beneficiaryList.add(beneficiary);}
@@ -89,7 +92,7 @@ public class Organization { //check wrappers
             count++;}
         } 
         
-        //εμφανίζει τους δωρητές Βeneficiary
+        //εμφανίζει τους Βeneficiary
         public static void listBeneficiary() {
             int count=1;
             for (Beneficiary beneficiary : beneficiaryList) 
@@ -101,7 +104,8 @@ public class Organization { //check wrappers
         public static void showCategory(String Category){
             int counter=1;
             switch(Category){
-                case "1":
+                //αν το Category ειναι 1 τότε εμφανίζει τα Materials αριθμημένα
+                case "1": 
                     for(Entity i: entityList){
                         if(i.getCategory()==1){
                             System.out.println(""+ counter + " " + i.getName());
@@ -109,7 +113,8 @@ public class Organization { //check wrappers
                         }
                     }
                     break;
-                    
+                
+                //αν το Category ειναι 2 τότε εμφανίζει τα Services αριθμημένα
                 case "2":
                     for(Entity i: entityList){
                         if(i.getCategory()==2){

@@ -1,5 +1,6 @@
 import java.util.*;
 public class RequestDonationList{
+    //λίστες
     public static ArrayList<RequestDonation> rdEntities=new ArrayList<RequestDonation>(); //δημιουργία λίστας
     static RequestDonation rdon;
     
@@ -10,7 +11,7 @@ public class RequestDonationList{
     //constructor χωρίς ορίσματα
     public RequestDonationList(){}
     
-        // γιατι την δημιουργησαμε;
+    //getter για την RequestDonation
     public static RequestDonation getRequestDonation(){return rdon;}
     
     //καταχώρηση ενός id του entity και επιστροφή του αντίστοιχου requestdonation 

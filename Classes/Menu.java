@@ -9,7 +9,7 @@ public class Menu {
  
     
 public static void Scan() throws NullLineReadedException{
-    System.out.println("Welcome to our Donator-Beneficiary system");
+    System.out.println("Welcome to " + Organization.getOrgName() + "!");
     System.out.println("Please enter a phone number: ");
     int search = 0; //Εκχωρηση τιμής 1,2,3 ανάλογα με τον τύπο του user 
      Beneficiary b; //Βοηθητική μεταβλητή

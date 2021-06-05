@@ -3,7 +3,7 @@ public class Organization {
         private static String name;
         private static Admin admin;
         
-        //λίστα με τα είδη που μπορούν να διανεμηθούν σε Beneficiarie
+        //λίστα με τα είδη που μπορούν να διανεμηθούν σε Beneficiaries
         static ArrayList<Entity> entityList = new ArrayList<Entity>();
         //λίστα με τους δωρητές
         static ArrayList<Donator> donatorList = new ArrayList<Donator>();

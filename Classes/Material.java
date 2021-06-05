@@ -1,7 +1,7 @@
 import java.util.*;
 public class Material extends Entity{
 
-    private static double level1=5; //η ποσοτητα που δικαιοuτai 1 ατομο 
+    private static double level1=5; //η ποσοτητα που δικαιουται 1 ατομο 
     private static double level2=10; //η ποσοτητα που δικαιουνται 2-4 ατομα 
     private static double level3=20; //η ποσοτητα που δικαιουνται 5+ ατομα 
     public int EntityCategory=1;

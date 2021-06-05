@@ -42,13 +42,13 @@ public class Organization {
         //getter για το όνομα του οργανισμού
         public static String getOrgName() {return name;}
         
-        //εξαίρεση ελέγχει αν υπάρχει ήδη το entity που βάζουμε
+        //ελέγχει αν υπάρχει ήδη το entity που βάζουμε και αν δεν υπάρχει το προσθέτει
         public void addEntity(Entity entity) {
              if(entityList.contains(entity)){
-                 throw new IllegalArgumentException("This entity is already in the list.");
+                 throw new IllegalArgumentException("This entity is already in the list."); //εξαίρεση εάν υπάρχει ήδη
                 }
             else{
-                entityList.add(entity);}
+                entityList.add(entity);} 
         }
         
        /* public void addCuDon(RequestDonation rd){

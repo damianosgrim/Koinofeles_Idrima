@@ -24,7 +24,7 @@ public class Material extends Entity{
     }
      
     
-    //μέθοδος για την εκτύπωση πληροφοριών και λεπτομεριών //@override    
+    //μέθοδος για την εκτύπωση πληροφοριών και λεπτομερειών //@override    
     public String toString(){
         return "info: " + getEntityInfo() + "details "+ getDetails();
      }

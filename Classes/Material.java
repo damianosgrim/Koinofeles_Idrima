@@ -17,7 +17,7 @@ public class Material extends Entity{
     public void setLevel3(double level3){this.level3=level3;}
     
     //getters για επιστροφή των ποσοτήτων του κάθε level και του είδους 
-    public  String getDetails(){
+    public String getDetails(){
        
         return ("level1: "+ level1 + " level2 " + level2 + " level3 " + level3 + " this object is material");
         

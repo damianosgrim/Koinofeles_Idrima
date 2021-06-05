@@ -1,6 +1,5 @@
 import java.util.*;
 public class RequestDonationList{
-    //λίστες
     public static ArrayList<RequestDonation> rdEntities=new ArrayList<RequestDonation>(); //δημιουργία λίστας
     static RequestDonation rdon;
     

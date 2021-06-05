@@ -1,6 +1,6 @@
 import java.util.*;
 public class Service extends Entity{
-    int EntityCategory=2;
+    public int EntityCategory=2;
     
     //μέθοδος που επιστρέφει το είδος της δωρεάς
     public String getDetails(){

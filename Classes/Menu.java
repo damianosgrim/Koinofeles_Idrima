@@ -289,13 +289,17 @@ public static void MenuB(Beneficiary b) {
             break;
             
             case "4": 
+            ex=false;
+            do{
             System.out.println("Do you want to sign in as: " + b.getFirstName() + " " + b.getLastName() +"? (y/n)");
              ans=scan.nextLine();
               if ((ans.equals("n") || ans.equals("no") )) {LogOut();}
               else if(ans.equals("y") || ans.equals("yes") ) {
               Menu.MenuB(b);  
-              exit=true;
+              ex=true;
              }  
+            }while(!ex);
+            exit=true;
             break;
             
             case "5":
@@ -430,12 +434,16 @@ public static void MenuD(Donator d) {
             break;
             
             case "4": 
+            ex=false;
+            do{
             System.out.println("Do you want to sign in as: " + d.getFirstName() + " " + d.getLastName() +"? (y/n)");
              ans=scan.nextLine();
               if ((ans.equals("n") || ans.equals("no") )) {LogOut();}
               else if(ans.equals("y") || ans.equals("yes") ) {
               Menu.MenuD(d);  
-             }  
+              ex=true;
+             } 
+            }while(!ex);
              exit=true;
             break;
             
@@ -571,13 +579,17 @@ public static void MenuA(Admin a)  {
             exit=true;  
             break;
             
-            case "3": 
+            case "3":
+            ex=false;
+            do{
             System.out.println("Do you want to sign in as: " + a.getFirstName() + " " + a.getLastName() +"? (y/n)");
              ans=scan.nextLine();
               if ((ans.equals("n") || ans.equals("no") )) {LogOut();}
               else if(ans.equals("y") || ans.equals("yes") ) {
-              Menu.MenuA(a);  
+              Menu.MenuA(a); 
+              ex=true;
              }  
+            }while(!ex);
              exit=true;
             break;
             

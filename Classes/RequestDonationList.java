@@ -23,7 +23,7 @@ public class RequestDonationList{
       }
     
     //προσθήκη requestdonation στην rdentities και τροποποίση του quantity εάν ήδη υπάρχει 
-    public static void add(RequestDonation requestdonation, double quant){  // εξαιρεση!!!
+    public static void add(RequestDonation requestdonation, double quant){  
          for (int i = 0; i<rdEntities.size(); i++)
         {
         if(rdEntities.get(i).getEntity().getId()== requestdonation.getEntity().getId()) {

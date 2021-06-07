@@ -37,7 +37,7 @@ public abstract class Entity{
         return "info: " + getEntityInfo() + "details "+ getDetails(); 
     }
     
-    //μέθοδος που δηλώνεται για να χρησιμοποιηθεί στην main ώστε να εκτυπώνει στον Admin την ποσότητα των Materials
+   //μέθοδος που δηλώνεται για να διαχωρίζει τα Services ή τα Materials (προσθήκη σώματος υποκλάσεις)
     public abstract int getCategory();
 }
    

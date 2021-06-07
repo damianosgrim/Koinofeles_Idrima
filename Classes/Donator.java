@@ -13,4 +13,5 @@ public class Donator extends User {
     //constructor με ορίσματα όνομα, επώνυμο, τηλέφωνο
     public Donator(String first, String last, String ph) 
     { super(first, last, ph); }
+
 }

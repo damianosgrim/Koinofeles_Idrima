@@ -29,7 +29,7 @@ public class Material extends Entity{
         return "info: " + getEntityInfo() + "details "+ getDetails();
      }
     
-    //μέθοδος που δηλώνεται για να χρησιμοποιηθεί στην main ώστε να εκτυπώνει στον Admin την ποσότητα των Materials
+//μέθοδος που δηλώνεται για να χρησιμοποιηθεί στην Organization ώστε να εκτυπώνει Materials
     public int getCategory(){
         return EntityCategory;
     }

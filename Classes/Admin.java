@@ -5,4 +5,5 @@ public class Admin extends User {
     { super(first, last, ph); }
     
     public boolean isAdmin() { return true; }//Override
+
 }

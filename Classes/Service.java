@@ -12,7 +12,7 @@ public class Service extends Entity{
     return "info: " + getEntityInfo() + "details "+ getDetails();
     }
     
-    //μέθοδος που δηλώνεται για να χρησιμοποιηθεί στην main ώστε να εκτυπώνει στον Admin την ποσότητα των Services
+    //μέθοδος που δηλώνεται για να χρησιμοποιηθεί στην Organization ώστε να εκτυπώνει Services
     public int getCategory(){
         return EntityCategory;
     }   
